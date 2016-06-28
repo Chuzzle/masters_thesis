@@ -25,6 +25,7 @@ Simulation_data simulate(Population& pop, vector<Event>& ev) {
     }
     t += delta_time;
     ev[event_index].execute_event(t, pop);
-    data.update();
+    data.update(event_index, t);
   }
+  return data;
 }

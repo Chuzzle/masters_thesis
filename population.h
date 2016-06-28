@@ -8,7 +8,6 @@
 #define POPULATION_H
 
 class Population {
-  friend class Simulation_data;
 public:
   Population(Pop_init pop_init);
   int get_pop(int index);
