@@ -10,4 +10,4 @@ class Event_newday : Event {
   void execute_event(double t, Population& pop) {
     return;
   }
-}
+};

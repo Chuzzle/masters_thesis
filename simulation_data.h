@@ -3,11 +3,11 @@
 #include "population.h"
 
 #ifndef SIMULATION_DATA_H
-#define
+#define SIMULATION_DATA_H
 
 class Simulation_data {
 public:
-  Simulation_data(int num_events, Population& pop);
+  Simulation_data(int num_events, Population& population);
   void update(int event_index, double t);
 private:
   Population& pop;

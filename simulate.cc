@@ -3,7 +3,7 @@
 
 #include "population.h"
 #include "constants.h"
-#include "events.h"
+#include "event.h"
 
 using namespace std;
 

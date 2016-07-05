@@ -10,6 +10,7 @@
 class Population {
 public:
   Population(Pop_init pop_init);
+
   int get_pop(int index);
   int move_pop(int move_from, int move_to);
   int increment_pop(int index);
