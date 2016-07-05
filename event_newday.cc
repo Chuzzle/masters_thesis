@@ -1,13 +1,9 @@
-#include <cmath>
+#include "event_newday.h"
 
-#include "event.h"
+double Event_newday::generate_time(double t, Population& pop) {
+  return ceil(t)-t;
+}
 
-class Event_newday : Event {
-  double generate_time(double t, Population& pop) {
-    return ceil(t)-t;
-  }
-
-  void execute_event(double t, Population& pop) {
-    return;
-  }
-};
+void Event_newday::execute_event(Population& pop) {
+  return;
+}

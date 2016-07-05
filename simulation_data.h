@@ -14,6 +14,6 @@ private:
   std::vector<Population> snaps;
   std::vector<double> timestamps;
   std::vector<int> event_counts;
-}
+};
 
 #endif
