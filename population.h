@@ -1,8 +1,7 @@
 #include <vector>
 
 #include "illegal_event_exception.h"
-#include "pop_init.h"
-#include "constants.h"
+#include "constants_runspec.h"
 
 #ifndef POPULATION_H
 #define POPULATION_H

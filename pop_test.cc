@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "population.h"
-#include "constants.h"
+#include "constants_runspec.h"
 
 using namespace std;
 

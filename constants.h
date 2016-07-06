@@ -28,12 +28,7 @@ enum {  //Indices of all populations included in the model
 
   NUM_POPS = 21,
 
-  NUM_DAYS = 365, //Number of days for which the simulation will be run
-
   NO_EVENT = 1000
 };
-
-const bool VACCINE = false;
-const bool LOAD_CLIMATE = false;
 
 #endif

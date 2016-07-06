@@ -17,14 +17,12 @@ CXXFLAGS += -g
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-all: pop_test run
+all: pop_test
 
 # Create the library; ranlib is for Darwin (OS X) and maybe other systems.
 # Doesn't seem to do any damage on other systems.
 
 pop_test: population.o pop_test.o
-
-run: simulate.o event_newday.o main.o
 
 # Phony targets
 .PHONY: all clean install
