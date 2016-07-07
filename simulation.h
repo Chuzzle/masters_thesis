@@ -1,5 +1,6 @@
 #include <map>
 #include <vector>
+#include <cmath>
 
 #include "constants_runspec.h"
 #include "population.h"
@@ -10,7 +11,7 @@
 class Simulation {
 public:
   Simulation(Population& population, std::vector<Event>& ev);
-  int simulate();
+  void simulate();
   Population get_state_at(double t);
 private:
   Population& pop;
