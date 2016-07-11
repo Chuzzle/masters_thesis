@@ -17,21 +17,23 @@ CXXFLAGS += -g
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-all: pop_test sim_test
+PROGS = pop_test simulation_test
+
+all: $(PROGS)
 
 # Create the library; ranlib is for Darwin (OS X) and maybe other systems.
 # Doesn't seem to do any damage on other systems.
 
 pop_test: population.o pop_test.o
 
-sim_test: simulation.o
+simulation_test: population.o event_newday.o event.o simulation.o simulation_test.o
 
 # Phony targets
 .PHONY: all clean install
 
 # Standard clean
 clean:
-	rm -f *.o
+	rm -f *.o $(PROGS)
 
 # Generate dependencies in *.d files
 %.d: %.cc

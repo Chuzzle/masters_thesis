@@ -1,8 +1,10 @@
 #include "simulation.h"
 
+#include <iostream>
+
 using namespace std;
 
-Simulation::Simulation(Population& population, vector<Event>& ev) : pop(population), events(ev), event_count(ev.size()) {
+Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
   snaps[0.] = Population(pop);
   //int num_events(ev.size());
   //event_count(num_events);
@@ -10,19 +12,20 @@ Simulation::Simulation(Population& population, vector<Event>& ev) : pop(populati
 
 void Simulation::simulate() {
   int event_index = NO_EVENT, num_events = events.size();
-  double t = 0, delta_time, help;
+  double t = 0.01, delta_time, help;
 
   while (t <= NUM_DAYS) {
     delta_time = numeric_limits<double>::max();
-    for (int k = 0; k == num_events; ++k) {
-      help = events[k].generate_time(t, pop);
+    for (auto k = 0; k != num_events; ++k) {
+      help = events[k]->generate_time(t, pop);
+      cout << help << endl;
       if (help < delta_time) {
         event_index = k;
         delta_time = help;
       }
     }
     t += delta_time;
-    events[event_index].execute_event(pop);
+    events[event_index]->execute_event(pop);
     snaps[t] = Population(pop);
     ++event_count[event_index];
   }

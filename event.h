@@ -7,9 +7,9 @@
 
 class Event {
 public:
-  explicit Event();
-  virtual double generate_time(double t, Population& pop);
-  virtual void execute_event(Population& pop);
+  explicit Event() {};
+  virtual double generate_time(double t, Population& pop) {return 0.;};
+  virtual void execute_event(Population& pop) {};
 };
 
 #endif

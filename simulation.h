@@ -13,12 +13,14 @@
 
 class Simulation {
 public:
-  Simulation(Population& population, std::vector<Event>& ev);
+  Simulation(Population& population,  const std::vector<Event*>& ev);
   void simulate();
   Population get_state_at(double t);
+  std::vector<int> get_event_counts() {return std::vector<int>(event_count);};
+  bool is_done() {return done;};
 private:
   Population& pop;
-  std::vector<Event>& events;
+  std::vector<Event*> events;
   std::map<double, Population> snaps;
   std::vector<int> event_count;
   bool done = false;
