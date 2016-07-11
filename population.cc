@@ -1,25 +1,25 @@
 #include "population.h"
 
-Population::Population(Pop_init pop_init) : populations(NUM_POPS) {
-  populations[INFANTS_SUSC] = pop_init.num_infants_susc;
-  populations[INFANTS_SICK] = pop_init.num_infants_sick;
-  populations[INFANTS_CARRIERS] = pop_init.num_infants_carriers;
-  populations[INFANTS_IMMUNE] = pop_init.num_infants_immune;
+Population::Population() : populations(NUM_POPS) {
+  populations[INFANTS_SUSC] = INIT_infants_susc;
+  populations[INFANTS_SICK] = INIT_infants_sick;
+  populations[INFANTS_CARRIERS] = INIT_infants_carriers;
+  populations[INFANTS_IMMUNE] = INIT_infants_immune;
 
-  populations[CHILDREN_SUSC] = pop_init.num_children_susc;
-  populations[CHILDREN_SICK] = pop_init.num_children_sick;
-  populations[CHILDREN_CARRIERS] = pop_init.num_children_carriers;
-  populations[CHILDREN_IMMUNE] = pop_init.num_children_immune;
+  populations[CHILDREN_SUSC] = INIT_children_susc;
+  populations[CHILDREN_SICK] = INIT_children_sick;
+  populations[CHILDREN_CARRIERS] = INIT_children_carriers;
+  populations[CHILDREN_IMMUNE] = INIT_children_immune;
 
-  populations[YOUNG_SUSC] = pop_init.num_young_susc;
-  populations[YOUNG_SICK] = pop_init.num_young_sick;
-  populations[YOUNG_CARRIERS] = pop_init.num_young_carriers;
-  populations[YOUNG_IMMUNE] = pop_init.num_young_immune;
+  populations[YOUNG_SUSC] = INIT_young_susc;
+  populations[YOUNG_SICK] = INIT_young_sick;
+  populations[YOUNG_CARRIERS] = INIT_young_carriers;
+  populations[YOUNG_IMMUNE] = INIT_young_immune;
 
-  populations[ADULT_SUSC] = pop_init.num_adult_susc;
-  populations[ADULT_SICK] = pop_init.num_adult_sick;
-  populations[ADULT_CARRIERS] = pop_init.num_adult_carriers;
-  populations[ADULT_IMMUNE] = pop_init.num_adult_immune;
+  populations[ADULT_SUSC] = INIT_adult_susc;
+  populations[ADULT_SICK] = INIT_adult_sick;
+  populations[ADULT_CARRIERS] = INIT_adult_carriers;
+  populations[ADULT_IMMUNE] = INIT_adult_immune;
 }
 
 int Population::get_pop (int index) {

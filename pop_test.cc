@@ -6,8 +6,7 @@
 using namespace std;
 
 int main() {
-  Pop_init init;
-  Population pop(init);
+  Population pop;
 
   cout << pop.get_pop(INFANTS_SUSC) << endl;
   cout << pop.get_pop(YOUNG_SUSC) << endl;

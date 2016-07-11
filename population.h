@@ -8,7 +8,7 @@
 
 class Population {
 public:
-  Population(Pop_init pop_init);
+  Population();
 
   int get_pop(int index);
   int move_pop(int move_from, int move_to);

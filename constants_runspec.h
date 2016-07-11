@@ -14,27 +14,28 @@ const int NUM_DAYS = 10;
 const bool VACCINE = false;
 const bool LOAD_CLIMATE = false;
 
-// Population initializer
-struct Pop_init {
-  const int num_infants_susc = 100;
-  const int num_infants_sick = 0;
-  const int num_infants_carriers = 0;
-  const int num_infants_immune = 0;
+// Population initializers
+// struct POP_INIT
+enum {
+  INIT_infants_susc = 100,
+  INIT_infants_sick = 0,
+  INIT_infants_carriers = 0,
+  INIT_infants_immune = 0,
 
-  const int num_children_susc = 0;
-  const int num_children_sick = 0;
-  const int num_children_carriers = 0;
-  const int num_children_immune = 0;
+  INIT_children_susc = 0,
+  INIT_children_sick = 0,
+  INIT_children_carriers = 0,
+  INIT_children_immune = 0,
 
-  const int num_young_susc = 50;
-  const int num_young_sick = 0;
-  const int num_young_carriers = 0;
-  const int num_young_immune = 0;
+  INIT_young_susc = 50,
+  INIT_young_sick = 0,
+  INIT_young_carriers = 0,
+  INIT_young_immune = 0,
 
-  const int num_adult_susc = 100;
-  const int num_adult_sick = 0;
-  const int num_adult_carriers = 0;
-  const int num_adult_immune = 0;
+  INIT_adult_susc = 100,
+  INIT_adult_sick = 0,
+  INIT_adult_carriers = 0,
+  INIT_adult_immune = 0
 };
 
 // What events to include
