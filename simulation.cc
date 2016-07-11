@@ -2,9 +2,10 @@
 
 using namespace std;
 
-Simulation::Simulation(Population& population, vector<Event>& ev) : pop(population) events(ev) {
-  snaps[0] = Population(pop);
-  event_counts(ev.size());
+Simulation::Simulation(Population& population, vector<Event>& ev) : pop(population), events(ev), event_count(ev.size()) {
+  snaps[0.] = Population(pop);
+  //int num_events(ev.size());
+  //event_count(num_events);
 }
 
 void Simulation::simulate() {
@@ -28,10 +29,12 @@ void Simulation::simulate() {
   done = true;
 }
 
-Population get_state_at(double t) {
-  if (t < NUM_DAYS) throw Illegal_time_exception();
-  auto iter = snaps.begin();
-  while (iter->first < t) ++iter;
-  --iter;
-  return Population(iter->second);
+Population Simulation::get_state_at(double t) {
+  // if (t > NUM_DAYS) throw Illegal_time_exception();
+  // auto iter = snaps.begin();
+  // while (iter->first < t) ++iter;
+  // --iter;
+  // Population p(iter->second);
+  // return p;
+  return Population(pop);
 }

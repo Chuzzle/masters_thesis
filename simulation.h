@@ -1,9 +1,12 @@
 #include <map>
 #include <vector>
-#include <cmath>
+//#include <cmath>
+#include <limits>
 
 #include "constants_runspec.h"
 #include "population.h"
+#include "illegal_time_exception.h"
+#include "event.h"
 
 #ifndef SIMULATION_H
 #define SIMULATION_H
