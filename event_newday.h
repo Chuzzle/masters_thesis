@@ -1,5 +1,3 @@
-#include <cmath>
-
 #include "event.h"
 
 #ifndef EVENT_NEWDAY_H

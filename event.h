@@ -1,4 +1,6 @@
 #include <vector>
+#include <random>
+#include <cmath>
 
 #include "population.h"
 
