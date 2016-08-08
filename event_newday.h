@@ -7,7 +7,7 @@
 
 class Event_newday : public Event {
 public:
-  Event_newday() {};
+  explicit Event_newday() {};
   virtual double generate_time(double t, Population& pop);
   virtual void execute_event(Population& pop);
 };
