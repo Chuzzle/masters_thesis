@@ -1,7 +1,5 @@
 #include "simulation.h"
 
-#include <iostream>
-
 using namespace std;
 
 Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
@@ -18,7 +16,6 @@ void Simulation::simulate() {
     delta_time = numeric_limits<double>::max();
     for (auto k = 0; k != num_events; ++k) {
       help = events[k]->generate_time(t, pop);
-      cout << help << endl;
       if (help < delta_time) {
         event_index = k;
         delta_time = help;
