@@ -13,6 +13,20 @@ void Simulation::simulate() {
   double t = 0.01, delta_time, help;
 
   while (t <= NUM_DAYS) {
+    /* 1. Find the sum of the probabilities
+    2. Find the time for the next event
+    3. Find the index for the next event
+    4. Exectute the given event + update time
+    5. Update probabilities for each event
+
+    This means I should have:
+    2 rng objects to generate the vals I need.
+    The rest should probably just be local variables in the simulate() member function?
+     */
+
+
+
+
     delta_time = numeric_limits<double>::max();
     for (auto k = 0; k != num_events; ++k) {
       help = events[k]->generate_time(t, pop);
