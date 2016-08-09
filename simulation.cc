@@ -18,44 +18,33 @@ void Simulation::simulate() {
 
     time_gen.param(sum_probs);
     time_delta = time_gen(generator);
+    
+    if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary.
+      t = floor(t+1);
+      continue;
+    }
 
     event_help = sum_probs * event_gen(generator);
 
     cum_probs = events[0].prob;
-    n = 0;
+    event_index = 0;
     while (cum_probs < event_help) {
-      ++n;
-      cum_probs += events[n].prob; //Check out how you did this in the earlier project.
+      ++event_index;
+      cum_probs += events[n].prob;
     }
+
+    events[event_index]->execute_event(pop);
+    t += time_delta;
+
+    snaps[t] = Population(pop);
+    ++event_count[event_index];
 
     /* 1. Find the sum of the probabilities -
     2. Find the time for the next event -
+    3. Find the index for the next event  -
+    4. Exectute the given event + update time -
+    5. Update the stored data
 
-    3. Find the index for the next event
-    4. Exectute the given event + update time
-    5. Update probabilities for each event
-
-    This means I should have:
-    2 rng objects to generate the vals I need.
-    The rest should probably just be local variables in the simulate() member function?
-     */
-
-
-
-
-    // delta_time = numeric_limits<double>::max();
-    // for (auto k = 0; k != num_events; ++k) {
-    //   help = events[k]->generate_time(t, pop);
-    //   if (help < delta_time) {
-    //     event_index = k;
-    //     delta_time = help;
-    //   }
-    // }
-
-    t += delta_time;
-    events[event_index]->execute_event(pop);
-    snaps[t] = Population(pop);
-    ++event_count[event_index];
   }
   done = true;
 }
