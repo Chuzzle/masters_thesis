@@ -3,6 +3,7 @@
 #include <cmath>
 #include <numeric>
 #include <limits>
+#include <algorithm>
 
 #include "constants_runspec.h"
 #include "population.h"
@@ -26,8 +27,7 @@ private:
   std::vector<int> event_count;
 
   std::default_random_engine generator;
-  std::exponential_distribution time_gen;
-  std::uniform_real_distribution event_gen;
+  std::uniform_real_distribution<double> event_gen;
 
   bool done = false;
 };

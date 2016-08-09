@@ -10,7 +10,7 @@
 class Event {
 public:
   explicit Event() {};
-  virtual double update_prob(double t, Population& pop) {prob = 0.; return;}; // For the new algorithm, this should be updated to return a probability rather than a time.
+  virtual double update_prob(double t, Population& pop) {prob = 0.; return prob;};
   virtual void execute_event(Population& pop) {};
   double prob;
 };

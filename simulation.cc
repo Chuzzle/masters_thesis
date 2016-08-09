@@ -9,16 +9,15 @@ Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(p
 }
 
 void Simulation::simulate() {
-  int event_index = NO_EVENT, num_events = events.size();
+  int event_index = NO_EVENT;
   double t = 0.01, sum_probs = 0., time_delta, event_help, cum_probs;
 
   while (t <= NUM_DAYS) {
     int n = 0;
-    for_each(events.begin(), events.end(), [&sum_probs, &pop, t] (Event& ev) {sum_probs += ev.update_prob(t, pop) return;});
+    for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t, pop); return;});
 
-    time_gen.param(sum_probs);
-    time_delta = time_gen(generator);
-    
+    time_delta = -log(event_gen(generator)) * sum_probs;
+
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary.
       t = floor(t+1);
       continue;
@@ -26,11 +25,11 @@ void Simulation::simulate() {
 
     event_help = sum_probs * event_gen(generator);
 
-    cum_probs = events[0].prob;
+    cum_probs = events[0]->prob;
     event_index = 0;
     while (cum_probs < event_help) {
       ++event_index;
-      cum_probs += events[n].prob;
+      cum_probs += events[n]->prob;
     }
 
     events[event_index]->execute_event(pop);
@@ -43,7 +42,7 @@ void Simulation::simulate() {
     2. Find the time for the next event -
     3. Find the index for the next event  -
     4. Exectute the given event + update time -
-    5. Update the stored data
+    5. Update the stored data */
 
   }
   done = true;
