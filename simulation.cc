@@ -10,11 +10,27 @@ Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(p
 
 void Simulation::simulate() {
   int event_index = NO_EVENT, num_events = events.size();
-  double t = 0.01, delta_time, help;
+  double t = 0.01, sum_probs = 0., time_delta, event_help, cum_probs;
 
   while (t <= NUM_DAYS) {
-    /* 1. Find the sum of the probabilities
-    2. Find the time for the next event
+    int n = 0;
+    for_each(events.begin(), events.end(), [&sum_probs, &pop, t] (Event& ev) {sum_probs += ev.update_prob(t, pop) return;});
+
+    time_gen.param(sum_probs);
+    time_delta = time_gen(generator);
+
+    event_help = sum_probs * event_gen(generator);
+
+    cum_probs = events[0].prob;
+    n = 0;
+    while (cum_probs < event_help) {
+      ++n;
+      cum_probs += events[n].prob; //Check out how you did this in the earlier project.
+    }
+
+    /* 1. Find the sum of the probabilities -
+    2. Find the time for the next event -
+
     3. Find the index for the next event
     4. Exectute the given event + update time
     5. Update probabilities for each event
@@ -27,14 +43,15 @@ void Simulation::simulate() {
 
 
 
-    delta_time = numeric_limits<double>::max();
-    for (auto k = 0; k != num_events; ++k) {
-      help = events[k]->generate_time(t, pop);
-      if (help < delta_time) {
-        event_index = k;
-        delta_time = help;
-      }
-    }
+    // delta_time = numeric_limits<double>::max();
+    // for (auto k = 0; k != num_events; ++k) {
+    //   help = events[k]->generate_time(t, pop);
+    //   if (help < delta_time) {
+    //     event_index = k;
+    //     delta_time = help;
+    //   }
+    // }
+
     t += delta_time;
     events[event_index]->execute_event(pop);
     snaps[t] = Population(pop);

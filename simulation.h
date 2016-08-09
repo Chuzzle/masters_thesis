@@ -1,6 +1,7 @@
 #include <map>
 #include <vector>
-//#include <cmath>
+#include <cmath>
+#include <numeric>
 #include <limits>
 
 #include "constants_runspec.h"
@@ -23,6 +24,11 @@ private:
   std::vector<Event*> events;
   std::map<double, Population> snaps;
   std::vector<int> event_count;
+
+  std::default_random_engine generator;
+  std::exponential_distribution time_gen;
+  std::uniform_real_distribution event_gen;
+
   bool done = false;
 };
 
