@@ -38,12 +38,6 @@ void Simulation::simulate() {
     snaps[t] = Population(pop);
     ++event_count[event_index];
 
-    /* 1. Find the sum of the probabilities -
-    2. Find the time for the next event -
-    3. Find the index for the next event  -
-    4. Exectute the given event + update time -
-    5. Update the stored data */
-
   }
   done = true;
 }

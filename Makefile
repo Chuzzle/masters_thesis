@@ -17,7 +17,7 @@ CXXFLAGS += -g
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-PROGS = pop_test simulation_test
+PROGS = pop_test sim_test
 
 all: $(PROGS)
 
@@ -26,7 +26,7 @@ all: $(PROGS)
 
 pop_test: population.o pop_test.o
 
-simulation_test: population.o event.o simulation.o
+sim_test: population.o event.o simulation.o sim_test.o event_tra_sicA_susA.o
 
 # Phony targets
 .PHONY: all clean install
