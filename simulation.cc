@@ -14,9 +14,10 @@ void Simulation::simulate() {
 
   while (t <= NUM_DAYS) {
     int n = 0;
+    sum_probs = 0.;
     for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t, pop); return;});
 
-    time_delta = -log(event_gen(generator)) * sum_probs;
+    time_delta = -log(event_gen(generator)) / sum_probs;
 
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary.
       t = floor(t+1);

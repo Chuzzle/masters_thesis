@@ -33,12 +33,12 @@ enum {
   INIT_young_immune = 0,
 
   INIT_adult_susc = 100,
-  INIT_adult_sick = 10,
+  INIT_adult_sick = 1,
   INIT_adult_carriers = 0,
   INIT_adult_immune = 0
 };
 
 // Probabilities in this run
-const double PROB_TRA_SICA_SUSA = 0.9;
+const double PROB_TRA_SICA_SUSA = 0.001;
 
 #endif

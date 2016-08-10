@@ -28,4 +28,7 @@ int main () {
 
   for_each(counts.begin(), counts.end(), [](int n) {cout << n << " ";} );
   cout << endl;
+
+  cout << "The new populations are: " << endl;
+  cout << pop.get_pop(ADULT_SUSC) << " and " << pop.get_pop(ADULT_SICK) << endl;
 }
