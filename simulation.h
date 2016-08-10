@@ -4,6 +4,7 @@
 #include <numeric>
 #include <limits>
 #include <algorithm>
+#include <ctime>
 
 #include "constants_runspec.h"
 #include "population.h"

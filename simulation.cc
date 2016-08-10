@@ -4,6 +4,7 @@ using namespace std;
 
 Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
   snaps[0.] = Population(pop);
+  generator.seed(time(0));
   //int num_events(ev.size());
   //event_count(num_events);
 }
