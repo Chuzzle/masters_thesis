@@ -26,7 +26,7 @@ all: $(PROGS)
 
 pop_test: population.o pop_test.o
 
-sim_test: population.o event.o simulation.o sim_test.o event_tra_sicA_susA.o
+sim_test: population.o event.o simulation.o sim_test.o event_tra_sicA_susA.o event_rec_sicA.o
 
 # Phony targets
 .PHONY: all clean install

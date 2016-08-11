@@ -14,7 +14,9 @@ int main () {
   Population pop;
   vector<Event*> events;
   Event_tra_sicA_susA ev;
+  Event_rec_sicA ev2;
   events.push_back(&ev);
+  event.push_back(&ev2);
 
   Simulation sim(pop, events);
 
@@ -30,9 +32,9 @@ int main () {
   cout << endl;
 
   cout << "The new populations are: " << endl;
-  cout << pop.get_pop(ADULT_SUSC) << " and " << pop.get_pop(ADULT_SICK) << endl;
+  cout << "Susceptible: " << pop.get_pop(ADULT_SUSC) << ", Sick: " << pop.get_pop(ADULT_SICK) << " and immune: " << pop.get_pop(ADULT_IMMUNE) << endl;
 
   cout << "Testing the get_state_at() function, time = 5:\n";
   Population res = sim.get_state_at(5.);
-  cout << "Susceptible: " << res.get_pop(ADULT_SUSC) << " and sick: " << res.get_pop(ADULT_SICK) << endl;
+  cout << "Susceptible: " << res.get_pop(ADULT_SUSC) << ", sick: " << res.get_pop(ADULT_SICK) << " and immune: " << pop.get_pop(ADULT_IMMUNE) << endl;
 }
