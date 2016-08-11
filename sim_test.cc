@@ -31,4 +31,8 @@ int main () {
 
   cout << "The new populations are: " << endl;
   cout << pop.get_pop(ADULT_SUSC) << " and " << pop.get_pop(ADULT_SICK) << endl;
+
+  cout << "Testing the get_state_at() function, time = 5:\n";
+  Population res = sim.get_state_at(5.);
+  cout << "Susceptible: " << res.get_pop(ADULT_SUSC) << " and sick: " << res.get_pop(ADULT_SICK) << endl;
 }

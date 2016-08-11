@@ -5,8 +5,6 @@ using namespace std;
 Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
   snaps[0.] = Population(pop);
   generator.seed(time(0));
-  //int num_events(ev.size());
-  //event_count(num_events);
 }
 
 void Simulation::simulate() {
@@ -45,11 +43,8 @@ void Simulation::simulate() {
 }
 
 Population Simulation::get_state_at(double t) {
-  // if (t > NUM_DAYS) throw Illegal_time_exception();
-  // auto iter = snaps.begin();
-  // while (iter->first < t) ++iter;
-  // --iter;
-  // Population p(iter->second);
-  // return p;
-  return Population(pop);
+  if (t > NUM_DAYS || t < 0) throw Illegal_time_exception();
+  auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, Population>::value_type obj) {return obj.first > t;} );
+  --res;
+  return Population(res->second);
 }
