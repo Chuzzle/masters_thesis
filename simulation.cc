@@ -20,6 +20,7 @@ void Simulation::simulate() {
 
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary.
       t = floor(t+1);
+      snaps[t] = Population(pop);
       continue;
     }
 
@@ -44,6 +45,7 @@ void Simulation::simulate() {
 
 Population Simulation::get_state_at(double t) {
   if (t > NUM_DAYS || t < 0) throw Illegal_time_exception();
+  if (snaps.count(t) != 0) return snaps[t];
   auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, Population>::value_type obj) {return obj.first > t;} );
   --res;
   return Population(res->second);
