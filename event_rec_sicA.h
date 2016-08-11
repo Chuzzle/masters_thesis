@@ -1,7 +1,7 @@
 #include "event.h"
 
-#ifndef "EVENT_REC_SICA_H"
-#define "EVENT_REC_SICA_H"
+#ifndef EVENT_REC_SICA_H
+#define EVENT_REC_SICA_H
 
 class Event_rec_sicA : public Event {
 public:

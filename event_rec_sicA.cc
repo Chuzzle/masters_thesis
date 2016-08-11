@@ -4,6 +4,7 @@ using namespace std;
 
 double Event_rec_sicA::update_prob(double t, Population& pop) {
   prob = PROB_REC_SICA * pop.get_pop(ADULT_SICK);
+  if (prob > 1) prob = 1.;
   return prob;
 }
 

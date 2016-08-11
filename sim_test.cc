@@ -4,6 +4,7 @@
 
 #include "simulation.h"
 #include "event_tra_sicA_susA.h"
+#include "event_rec_sicA.h"
 #include "population.h"
 #include "constants.h"
 #include "constants_runspec.h"
@@ -16,7 +17,7 @@ int main () {
   Event_tra_sicA_susA ev;
   Event_rec_sicA ev2;
   events.push_back(&ev);
-  event.push_back(&ev2);
+  events.push_back(&ev2);
 
   Simulation sim(pop, events);
 

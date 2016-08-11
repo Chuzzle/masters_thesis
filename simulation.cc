@@ -1,5 +1,5 @@
 #include "simulation.h"
-
+#include <iostream>
 using namespace std;
 
 Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
@@ -25,8 +25,8 @@ void Simulation::simulate() {
     }
 
     event_help = sum_probs * event_gen(generator);
-
     cum_probs = events[0]->prob;
+
     event_index = 0;
     while (cum_probs < event_help) {
       ++event_index;
@@ -35,7 +35,6 @@ void Simulation::simulate() {
 
     events[event_index]->execute_event(pop);
     t += time_delta;
-
     snaps[t] = Population(pop);
     ++event_count[event_index];
 

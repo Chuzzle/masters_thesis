@@ -39,7 +39,7 @@ enum {
 };
 
 // Probabilities in this run
-const double PROB_TRA_SICA_SUSA = 0.001;
+const double PROB_TRA_SICA_SUSA = 0.01;
 const double PROB_REC_SICA = 1/14.;
 
 #endif
