@@ -45,7 +45,7 @@ void Simulation::simulate() {
 
 Population Simulation::get_state_at(double t) {
   if (t > NUM_DAYS || t < 0) throw Illegal_time_exception();
-  if (snaps.count(t) != 0) return snaps[t];
+  if (snaps.count(t) != 0) return Population(snaps[t]);
   auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, Population>::value_type obj) {return obj.first > t;} );
   --res;
   return Population(res->second);
