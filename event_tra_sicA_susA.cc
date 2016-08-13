@@ -9,5 +9,5 @@ double Event_tra_sicA_susA::update_prob(double t, Population& pop) {
 }
 
 void Event_tra_sicA_susA::execute_event(Population& pop) {
-  pop.move_pop(ADULT_SUSC, ADULT_SICK);
+  pop.move_pop(ADULT_SUSC, ADULT_CARRIERS);
 }

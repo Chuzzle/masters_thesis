@@ -15,7 +15,7 @@ const bool VACCINE = false;
 const bool LOAD_CLIMATE = false;
 
 // Population initializers
-// struct POP_INIT
+
 enum {
   INIT_infants_susc = 0,
   INIT_infants_sick = 0,
@@ -41,5 +41,8 @@ enum {
 // Probabilities in this run
 const double PROB_TRA_SICA_SUSA = 0.01;
 const double PROB_REC_SICA = 1/14.;
+const double INVASIVENESS_A = 0.01;
+const double PROB_TRA_CARA_SUSA = 0.001;
+const double PROB_REC_CARA = 1/182.;
 
 #endif
