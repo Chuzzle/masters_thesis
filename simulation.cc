@@ -1,5 +1,5 @@
 #include "simulation.h"
-#include <iostream>
+
 using namespace std;
 
 Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
@@ -18,7 +18,7 @@ void Simulation::simulate() {
 
     time_delta = -log(event_gen(generator)) / sum_probs;
 
-    if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary.
+    if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary. It does, however, make for more efficient measurements.
       t = floor(t+1);
       snaps[t] = Population(pop);
       continue;
