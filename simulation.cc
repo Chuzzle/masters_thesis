@@ -12,7 +12,6 @@ void Simulation::simulate() {
   double t = 0.01, sum_probs = 0., time_delta, event_help, cum_probs;
 
   while (t <= NUM_DAYS) {
-    int n = 0;
     sum_probs = 0.;
     for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t, pop); return;});
 
@@ -30,7 +29,7 @@ void Simulation::simulate() {
     event_index = 0;
     while (cum_probs < event_help) {
       ++event_index;
-      cum_probs += events[n]->prob;
+      cum_probs += events[event_index]->prob;
     }
 
     events[event_index]->execute_event(pop);

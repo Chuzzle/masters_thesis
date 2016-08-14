@@ -1,7 +1,7 @@
 #include "event.h"
 
-#ifndef "EVENT_TRA_CARA_SUSA_H"
-#define "EVENT_TRA_CARA_SUSA_H"
+#ifndef EVENT_TRA_CARA_SUSA_H
+#define EVENT_TRA_CARA_SUSA_H
 
 class Event_tra_carA_susA : public Event {
 public:

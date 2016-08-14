@@ -8,7 +8,7 @@
 #define CONSTANTS_RUNSPEC_H
 
 // Time for which to run the simulation
-const int NUM_DAYS = 10;
+const int NUM_DAYS = 100;
 
 // Various booleans on some settings
 const bool VACCINE = false;
