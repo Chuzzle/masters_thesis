@@ -8,6 +8,6 @@ public:
   explicit Event_rec_carA() {};
   virtual double update_prob(double t, Population& pop);
   virtual void execute_event(Population& pop);
-}
+};
 
 #endif
