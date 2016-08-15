@@ -8,7 +8,7 @@
 #define CONSTANTS_RUNSPEC_H
 
 // Time for which to run the simulation
-const int NUM_DAYS = 10;
+const int NUM_DAYS = 100;
 const int NUM_RUNS = 10;
 
 // Various booleans on some settings
@@ -43,7 +43,7 @@ enum {
 const double PROB_TRA_SICA_SUSA = 0.01;
 const double PROB_REC_SICA = 1/14.;
 const double INVASIVENESS_A = 0.01;
-const double PROB_TRA_CARA_SUSA = 0.001;
+const double PROB_TRA_CARA_SUSA = 0.;
 const double PROB_REC_CARA = 1/182.;
 
 #endif
