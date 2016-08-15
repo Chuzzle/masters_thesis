@@ -25,6 +25,7 @@ int main() {
   Event_tra_sicA_susA ev3;
   Event_rec_carA ev4;
   Event_rec_sicA ev5;
+  Constants_runspec constants;
 
   events.push_back(&ev1);
   events.push_back(&ev2);
@@ -32,7 +33,7 @@ int main() {
   events.push_back(&ev4);
   events.push_back(&ev5);
 
-  for (int n = 0; n != NUM_RUNS; ++n) {
+  for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
     sims.push_back(Simulation(pop, events));
     cout << "New simulation initialized." << endl;
     sims[n].simulate();
@@ -47,10 +48,10 @@ int main() {
       return 1;
   }
   for (auto it = sims.begin(); it != sims.end(); ++it) {
-    for (int n = 0; n != NUM_DAYS; ++n) {
+    for (int n = 0; n != constants.get_int("NUM_DAYS"); ++n) {
       tmp = it->get_state_at(static_cast<double>(n));
       res_file << n << " ";
-      for (int k = 0; k!= NUM_POPS; ++k) {
+      for (int k = 0; k!= constants.get_int("NUM_POPS"); ++k) {
         res_file << tmp.get_pop(k) << " ";
       }
       res_file << "\n";

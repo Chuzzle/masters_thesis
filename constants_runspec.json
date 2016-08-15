@@ -1,0 +1,62 @@
+{
+  "NUM_DAYS" : 100,
+  "NUM_RUNS" : 10,
+
+  "VACCINE" : 0,
+  "LOAD_CLIMATE" : 0,
+
+
+  "INIT_infants_susc" : 0,
+  "INIT_infants_sick" : 0,
+  "INIT_infants_carriers" : 0,
+  "INIT_infants_immune" : 0,
+
+  "INIT_children_susc" : 0,
+  "INIT_children_sick" : 0,
+  "INIT_children_carriers" : 0,
+  "INIT_children_immune" : 0,
+
+  "INIT_young_susc" : 0,
+  "INIT_young_sick" : 0,
+  "INIT_young_carriers" : 0,
+  "INIT_young_immune" : 0,
+
+  "INIT_adult_susc" : 100,
+  "INIT_adult_sick" : 1,
+  "INIT_adult_carriers" : 0,
+  "INIT_adult_immune" : 0,
+
+  "PROB_TRA_SICA_SUSA" : 0.01,
+  "PROB_REC_SICA" : 0.07,
+  "INVASIVENESS_A" : 0.01,
+  "PROB_TRA_CARA_SUSA" : 0.0,
+  "PROB_REC_CARA" : 0.005,
+
+  "INFANTS_SUSC" : 1,
+  "INFANTS_SICK" : 2,
+  "INFANTS_CARRIERS" : 3,
+  "INFANTS_IMMUNE" : 4,
+  "INFANTS_VACC" : 5,
+
+  "CHILDREN_SUSC" : 6,
+  "CHILDREN_SICK" : 7,
+  "CHILDREN_CARRIERS" : 8,
+  "CHILDREN_IMMUNE" : 9,
+  "CHILDREN_VACC" : 10,
+
+  "YOUNG_SUSC" : 11,
+  "YOUNG_SICK" : 12,
+  "YOUNG_CARRIERS" : 13,
+  "YOUNG_IMMUNE" : 14,
+  "YOUNG_VACC" : 15,
+
+  "ADULT_SUSC" : 16,
+  "ADULT_SICK" : 17,
+  "ADULT_CARRIERS" : 18,
+  "ADULT_IMMUNE" : 19,
+  "ADULT_VACC" : 20,
+
+  "NUM_POPS" : 21,
+
+  "NO_EVENT" : 1000
+}

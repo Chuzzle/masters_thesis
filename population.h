@@ -15,6 +15,7 @@ public:
   int increment_pop(int index);
   int decrease_pop(int index);
 private:
+  Constants_runspec constants;
   std::vector<int> populations;
 };
 
