@@ -13,6 +13,9 @@ CPPFLAGS =  -std=c++11
 CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wold-style-cast
 CXXFLAGS += -std=c++11
 CXXFLAGS += -g
+
+LDFLAGS += -L.
+LDLIBS = -ljsoncpp
 #CXXFLAGS =  -stdlib=libc++
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
@@ -24,9 +27,9 @@ all: $(PROGS)
 # Create the library; ranlib is for Darwin (OS X) and maybe other systems.
 # Doesn't seem to do any damage on other systems.
 
-pop_test: population.o pop_test.o
+pop_test: pop_test.o population.o constants_runspec.o
 
-simulation_run_first: population.o event.o simulation.o simulation_run_first.o event_tra_sicA_susA.o event_rec_sicA.o event_rec_carA.o event_tra_carA_susA.o event_inv_carA.o
+simulation_run_first: population.o event.o simulation.o simulation_run_first.o event_tra_sicA_susA.o event_rec_sicA.o event_rec_carA.o event_tra_carA_susA.o event_inv_carA.o constants_runspec.o
 
 # Phony targets
 .PHONY: all clean install

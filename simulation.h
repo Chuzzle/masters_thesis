@@ -30,6 +30,8 @@ private:
   std::default_random_engine generator;
   std::uniform_real_distribution<double> event_gen;
 
+  Constants_runspec constants;
+
   bool done = false;
 };
 

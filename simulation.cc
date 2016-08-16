@@ -8,10 +8,10 @@ Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(p
 }
 
 void Simulation::simulate() {
-  int event_index = NO_EVENT;
+  int event_index;
   double t = 0.01, sum_probs = 0., time_delta, event_help, cum_probs;
 
-  while (t <= NUM_DAYS) {
+  while (t <= constants.get_int("NUM_DAYS")) {
     sum_probs = 0.;
     for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t, pop); return;});
 
@@ -42,7 +42,7 @@ void Simulation::simulate() {
 }
 
 Population Simulation::get_state_at(double t) {
-  if (t > NUM_DAYS || t < 0) throw Illegal_time_exception();
+  if (t > constants.get_int("NUM_DAYS") || t < 0) throw Illegal_time_exception();
   if (snaps.count(t) != 0) return Population(snaps[t]);
   auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, Population>::value_type obj) {return obj.first > t;} );
   --res;
