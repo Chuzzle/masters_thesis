@@ -1,5 +1,7 @@
 #include "population.h"
 
+using namespace std;
+
 Population::Population() : constants(), populations(constants.get_int("NUM_POPS")) {
   populations[constants.get_int("INFANTS_SUSC")] = constants.get_int("INIT_infants_susc");
   populations[constants.get_int("INFANTS_SICK")] = constants.get_int("INIT_infants_sick");
@@ -22,23 +24,32 @@ Population::Population() : constants(), populations(constants.get_int("NUM_POPS"
   populations[constants.get_int("ADULT_IMMUNE")] = constants.get_int("INIT_adult_immune");
 }
 
+int Population::get_pop (string index) {
+  int ind = constants.get_int(index);
+  return populations[ind];
+}
+
 int Population::get_pop (int index) {
   return populations[index];
 }
 
-int Population::increment_pop (int index) {
-  return ++populations[index];
+int Population::increment_pop (string index) {
+  int ind = constants.get_int(index);
+  return ++populations[ind];
 }
 
-int Population::decrease_pop (int index) {
-  if (populations[index] == 0) throw Illegal_event_exception();
-  return --populations[index];
+int Population::decrease_pop (string index) {
+  int ind = constants.get_int(index);
+  if (populations[ind] == 0) throw Illegal_event_exception();
+  return --populations[ind];
 }
 
-int Population::move_pop (int move_from, int move_to) {
-  if (--populations[move_from] < 0) {
-    populations[move_from] = 0;
+int Population::move_pop (string move_from, string move_to) {
+  int mv_from = constants.get_int(move_from);
+  int mv_to = constants.get_int(move_to);
+  if (--populations[mv_from] < 0) {
+    populations[mv_from] = 0;
     throw Illegal_event_exception();
   }
-  return ++populations[move_to];
+  return ++populations[mv_to];
 }

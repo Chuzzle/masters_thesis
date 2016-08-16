@@ -6,7 +6,6 @@
 #include "event_tra_sicA_susA.h"
 #include "event_rec_sicA.h"
 #include "population.h"
-#include "constants.h"
 #include "constants_runspec.h"
 
 using namespace std;
@@ -34,9 +33,9 @@ int main () {
   cout << endl;
 
   cout << "The new populations are: " << endl;
-  cout << "Susceptible: " << pop.get_pop(constants.get_int("ADULT_SUSC")) << ", Sick: " << pop.get_pop(constants.get_int("ADULT_SICK")) << " and immune: " << pop.get_pop(constants.get_int("ADULT_IMMUNE")) << endl;
+  cout << "Susceptible: " << pop.get_pop("ADULT_SUSC") << ", Sick: " << pop.get_pop("ADULT_SICK") << " and immune: " << pop.get_pop("ADULT_IMMUNE") << endl;
 
   cout << "Testing the get_state_at() function, time = 5:\n";
   Population res = sim.get_state_at(5.);
-  cout << "Susceptible: " << res.get_pop(constants.get_int("ADULT_SUSC")) << ", sick: " << res.get_pop(constants.get_int("ADULT_SICK")) << " and immune: " << pop.get_pop(constants.get_int("ADULT_IMMUNE")) << endl;
+  cout << "Susceptible: " << res.get_pop("ADULT_SUSC") << ", sick: " << res.get_pop("ADULT_SICK") << " and immune: " << pop.get_pop("ADULT_IMMUNE") << endl;
 }

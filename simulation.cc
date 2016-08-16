@@ -8,7 +8,7 @@ Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(p
 }
 
 void Simulation::simulate() {
-  int event_index = constants.get_int("NO_EVENT");
+  int event_index;
   double t = 0.01, sum_probs = 0., time_delta, event_help, cum_probs;
 
   while (t <= constants.get_int("NUM_DAYS")) {

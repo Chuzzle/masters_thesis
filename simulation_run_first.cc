@@ -11,7 +11,6 @@
 #include "event_rec_carA.h"
 #include "event_inv_carA.h"
 #include "population.h"
-#include "constants.h"
 #include "constants_runspec.h"
 
 using namespace std;
