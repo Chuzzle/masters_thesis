@@ -1,5 +1,5 @@
 {
-  "NUM_DAYS" : 100,
+  "NUM_DAYS" : 10,
   "NUM_RUNS" : 10,
 
   "VACCINE" : 0,
