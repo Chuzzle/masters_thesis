@@ -25,7 +25,7 @@ def main(argv):
         ccr = np.nanmean(np.divide(data[n, :, constants['ADULT_SICK']], data[n, :, constants['ADULT_CARRIERS']]))
         max_sick = np.max(data[n,:,constants['ADULT_SICK']])
         stats_array[n,:] = [rate_carriers, ccr, max_sick]
-    print '{0:22}|| {1:18} || {2:18} ||'.format('  Rate of carriers', 'Case-Carrier ratio', 'Top notation of sick')
+    print '{0:22}|| {1:18} || {2:18} ||'.format('   Rate of carriers', 'Case-Carrier ratio', 'Top notation of sick')
     print np.array2string(stats_array, separator= '||', formatter={'float_kind':lambda x: "%20f" % x})
     plt.show()
 

@@ -43,7 +43,7 @@ int main() {
   ofstream res_file;
   res_file.open("data/simulation_run_first.txt");
   if(!res_file.is_open()) {
-      cerr << "Could not open results file." << endl;
+      cerr << "Could not open results file. If the folder 'data' does not exist, try creating it in this directory." << endl;
       return 1;
   }
   for (auto it = sims.begin(); it != sims.end(); ++it) {
