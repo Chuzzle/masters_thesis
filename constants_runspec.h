@@ -1,6 +1,7 @@
 #include <map>
 #include <string>
 #include <fstream>
+#include <iostream>
 
 #include "/usr/include/jsoncpp/json/json.h"
 
