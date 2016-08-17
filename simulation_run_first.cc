@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 
-#include "utf8.h"
 #include "simulation.h"
 #include "event_tra_sicA_susA.h"
 #include "event_tra_carA_susA.h"
