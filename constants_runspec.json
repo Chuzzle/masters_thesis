@@ -1,5 +1,5 @@
 {
-  "NUM_DAYS" : 10,
+  "NUM_DAYS" : 1000,
   "NUM_RUNS" : 10,
 
   "VACCINE" : 0,
@@ -26,10 +26,10 @@
   "INIT_adult_carriers" : 0,
   "INIT_adult_immune" : 0,
 
-  "PROB_TRA_SICA_SUSA" : 0.01,
+  "PROB_TRA_SICA_SUSA" : 0.001,
   "PROB_REC_SICA" : 0.07,
-  "INVASIVENESS_A" : 0.01,
-  "PROB_TRA_CARA_SUSA" : 0.0,
+  "INVASIVENESS_A" : 0.0001,
+  "PROB_TRA_CARA_SUSA" : 0.0001,
   "PROB_REC_CARA" : 0.005,
 
   "INFANTS_SUSC" : 1,
