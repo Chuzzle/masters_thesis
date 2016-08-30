@@ -16,25 +16,29 @@
 using namespace std;
 
 int main() {
-  Population pop, tmp;
+  Population tmp, pop_init;
   vector<Simulation> sims;
-  vector<Event*> events;
-  Event_tra_carA_susA ev1;
-  Event_inv_carA ev2;
-  Event_tra_sicA_susA ev3;
-  Event_rec_carA ev4;
-  Event_rec_sicA ev5;
-  Event_death_sicA ev6;
+
   Constants_runspec constants;
 
-  events.push_back(&ev1);
-  events.push_back(&ev2);
-  events.push_back(&ev3);
-  events.push_back(&ev4);
-  events.push_back(&ev5);
-  events.push_back(&ev6);
-
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
+    vector<Event*> events;
+    Population pop(pop_init);
+    
+    Event_tra_carA_susA ev1(pop);
+    Event_inv_carA ev2(pop);
+    Event_tra_sicA_susA ev3(pop);
+    Event_rec_carA ev4(pop);
+    Event_rec_sicA ev5(pop);
+    Event_death_sicA ev6(pop);
+
+    events.push_back(&ev1);
+    events.push_back(&ev2);
+    events.push_back(&ev3);
+    events.push_back(&ev4);
+    events.push_back(&ev5);
+    events.push_back(&ev6);
+
     sims.push_back(Simulation(pop, events));
     cout << "New simulation initialized." << endl;
     sims[n].simulate();

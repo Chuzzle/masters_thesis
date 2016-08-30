@@ -5,9 +5,9 @@
 
 class Event_tra_sicA_susA : public Event {
 public:
-  explicit Event_tra_sicA_susA() {};
-  virtual double update_prob(double t, Population& pop);
-  virtual void execute_event(Population& pop);
+  explicit Event_tra_sicA_susA(Population& pop_init) : Event(pop_init) {};
+  virtual double update_prob(double t);
+  virtual void execute_event();
 };
 
 #endif

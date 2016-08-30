@@ -2,10 +2,10 @@
 
 using namespace std;
 
-double Event_death_sicA::update_prob(double t, Population& pop) {
+double Event_death_sicA::update_prob(double t) {
   return constants.get_prob("FATALITY")*pop.get_pop("ADULT_SICK");
 }
 
-void Event_death_sicA::execute_event(Population& pop) {
+void Event_death_sicA::execute_event() {
   pop.decrease_pop("ADULT_SICK");
 }

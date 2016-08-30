@@ -5,9 +5,9 @@
 
 class Event_inv_carA : public Event {
 public:
-  explicit Event_inv_carA() {};
-  virtual double update_prob(double t, Population& pop);
-  virtual void execute_event(Population& pop);
+  explicit Event_inv_carA(Population& pop_init) : Event(pop_init) {};
+  virtual double update_prob(double t);
+  virtual void execute_event();
 };
 
 #endif

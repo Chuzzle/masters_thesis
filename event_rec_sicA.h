@@ -5,9 +5,9 @@
 
 class Event_rec_sicA : public Event {
 public:
-  explicit Event_rec_sicA() {};
-  virtual double update_prob(double t, Population& pop);
-  virtual void execute_event(Population& pop);
+  explicit Event_rec_sicA(Population& pop_init) : Event(pop_init) {};
+  virtual double update_prob(double t);
+  virtual void execute_event();
 };
 
 

@@ -10,11 +10,12 @@
 
 class Event {
 public:
-  explicit Event() {};
-  virtual double update_prob(double t, Population& pop) {return 0.;};
-  virtual void execute_event(Population& pop) {};
+  explicit Event(Population& pop_init) : pop(pop_init) {};
+  virtual double update_prob(double t) {return 0.;};
+  virtual void execute_event() {};
   double prob;
   Constants_runspec constants;
+  Population& pop;
 };
 
 #endif

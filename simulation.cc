@@ -14,7 +14,7 @@ void Simulation::simulate() {
 
   while (t <= constants.get_int("NUM_DAYS")) {
     sum_probs = 0.;
-    for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t, pop); return;});
+    for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t); return;});
 
     time_delta = -log(rnd_gen(generator)) / sum_probs;
 
@@ -31,7 +31,7 @@ void Simulation::simulate() {
       if (cum_probs >= event_help) break;
     }
 
-    events[event_index]->execute_event(pop);
+    events[event_index]->execute_event();
     t += time_delta;
     snaps[t] = Population(pop);
     ++event_count[event_index];

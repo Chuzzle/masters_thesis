@@ -22,7 +22,7 @@ public:
   std::vector<int> get_event_counts() {return std::vector<int>(event_count);};
   bool is_done() {return done;};
 private:
-  Population pop;
+  Population& pop;
   std::vector<Event*> events;
   std::map<double, Population> snaps;
   std::vector<int> event_count;
