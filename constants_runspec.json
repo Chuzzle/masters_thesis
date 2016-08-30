@@ -21,16 +21,17 @@
   "INIT_young_carriers" : 0,
   "INIT_young_immune" : 0,
 
-  "INIT_adult_susc" : 100,
-  "INIT_adult_sick" : 1,
-  "INIT_adult_carriers" : 0,
+  "INIT_adult_susc" : 500,
+  "INIT_adult_sick" : 0,
+  "INIT_adult_carriers" : 25,
   "INIT_adult_immune" : 0,
 
   "PROB_TRA_SICA_SUSA" : 0.001,
-  "PROB_REC_SICA" : 0.07,
-  "INVASIVENESS_A" : 0.0001,
+  "PROB_REC_SICA" : 0.14286,
+  "INVASIVENESS_A" : 0.00001,
   "PROB_TRA_CARA_SUSA" : 0.0001,
-  "PROB_REC_CARA" : 0.005,
+  "PROB_REC_CARA" : 0.00556,
+  "FATALITY" : 0.01429,
 
   "INFANTS_SUSC" : 1,
   "INFANTS_SICK" : 2,
