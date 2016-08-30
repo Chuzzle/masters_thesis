@@ -1,6 +1,6 @@
 {
   "NUM_DAYS" : 2000,
-  "NUM_RUNS" : 10,
+  "NUM_RUNS" : 100,
 
   "VACCINE" : 0,
   "LOAD_CLIMATE" : 0,

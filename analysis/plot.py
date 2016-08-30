@@ -27,6 +27,10 @@ def main(argv):
         stats_array[n,:] = [rate_carriers, ccr, max_sick]
     print '{0:22}|| {1:18} || {2:18} ||'.format('   Rate of carriers', 'Case-Carrier ratio', 'Top notation of sick')
     print np.array2string(stats_array, separator= '||', formatter={'float_kind':lambda x: "%20f" % x})
+
+    fig = plt.figure(2)
+    top_sick = np.sort(stats_array[:,2])
+    plt.plot(top_sick)
     plt.show()
 
 
