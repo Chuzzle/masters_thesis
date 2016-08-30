@@ -28,7 +28,7 @@ private:
   std::vector<int> event_count;
 
   std::default_random_engine generator;
-  std::uniform_real_distribution<double> event_gen;
+  std::uniform_real_distribution<double> rnd_gen;
 
   Constants_runspec constants;
 

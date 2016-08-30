@@ -9,6 +9,7 @@
 #include "event_rec_sicA.h"
 #include "event_rec_carA.h"
 #include "event_inv_carA.h"
+#include "event_death_sicA.h"
 #include "population.h"
 #include "constants_runspec.h"
 
@@ -23,6 +24,7 @@ int main() {
   Event_tra_sicA_susA ev3;
   Event_rec_carA ev4;
   Event_rec_sicA ev5;
+  Event_death_sicA ev6;
   Constants_runspec constants;
 
   events.push_back(&ev1);
@@ -30,6 +32,7 @@ int main() {
   events.push_back(&ev3);
   events.push_back(&ev4);
   events.push_back(&ev5);
+  events.push_back(&ev6);
 
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
     sims.push_back(Simulation(pop, events));

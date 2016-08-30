@@ -1,5 +1,5 @@
 #include "simulation.h"
-
+#include <iostream>
 using namespace std;
 
 Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
@@ -16,7 +16,7 @@ void Simulation::simulate() {
     sum_probs = 0.;
     for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t, pop); return;});
 
-    time_delta = -log(event_gen(generator)) / sum_probs;
+    time_delta = -log(rnd_gen(generator)) / sum_probs;
 
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary. It does, however, make for more efficient measurements.
       t = floor(t+1);
@@ -24,13 +24,11 @@ void Simulation::simulate() {
       continue;
     }
 
-    event_help = sum_probs * event_gen(generator);
-    cum_probs = events[0]->prob;
+    event_help = sum_probs * rnd_gen(generator);
 
-    event_index = 0;
-    while (cum_probs < event_help) {
-      ++event_index;
+    for (event_index = 0, cum_probs = 0.; event_index < events.size()-1; ++event_index) {
       cum_probs += events[event_index]->prob;
+      if (cum_probs >= event_help) break;
     }
 
     events[event_index]->execute_event(pop);
