@@ -1,10 +1,12 @@
 {
   "NUM_DAYS" : 2000,
-  "NUM_RUNS" : 100,
+  "NUM_RUNS" : 10,
+
+  "DRY_START" : 61.0,
+  "DRY_END" : 335.0,
 
   "VACCINE" : 0,
   "LOAD_CLIMATE" : 0,
-
 
   "INIT_infants_susc" : 0,
   "INIT_infants_sick" : 0,
@@ -32,6 +34,7 @@
   "PROB_TRA_CARA_SUSA" : 0.00001,
   "PROB_REC_CARA" : 0.00556,
   "FATALITY" : 0.01429,
+  "PROB_ENCOUNTER" : 1,
 
   "INFANTS_SUSC" : 1,
   "INFANTS_SICK" : 2,

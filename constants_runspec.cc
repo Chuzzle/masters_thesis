@@ -30,3 +30,8 @@ double Constants_runspec::get_prob(string key) {
   cerr << "Error in the constants formatting; note that all probabilities must be doubles." << endl;
   exit(1);
 }
+
+int Constants_runspec::is_dry(double t) {
+  while (t > 365.0) t -= 365.;
+  return (t > this->get_prob("DRY_START")) && (t < this->get_prob("DRY_END"));
+}

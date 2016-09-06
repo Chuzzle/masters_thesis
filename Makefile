@@ -20,7 +20,7 @@ LDLIBS = -ljsoncpp
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-PROGS = pop_test simulation_run_first
+PROGS = pop_test simulation_2_pops
 
 all: $(PROGS)
 
@@ -29,7 +29,7 @@ all: $(PROGS)
 
 pop_test: pop_test.o population.o constants_runspec.o
 
-simulation_run_first: population.o event.o simulation.o simulation_run_first.o event_tra_sicA_susA.o event_rec_sicA.o event_rec_carA.o event_tra_carA_susA.o event_inv_carA.o event_death_sicA.o constants_runspec.o
+simulation_2_pops: population.o event.o simulation.o simulation_2_pops.o event_tra_sicA_susA.o event_rec_sicA.o event_rec_carA.o event_tra_carA_susA.o event_inv_carA.o event_death_sicA.o event_tra_carA1_susA2.o event_tra_sicA1_susA2.o event_encounter.o constants_runspec.o
 
 # Phony targets
 .PHONY: all clean install
