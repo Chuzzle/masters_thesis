@@ -15,22 +15,22 @@ CXXFLAGS += -std=c++11
 CXXFLAGS += -g
 
 LDFLAGS += -L.
-LDLIBS = -ljsoncpp
+LDFLAGS += -L eventlib
+LDLIBS = -ljsoncpp -levents
 #CXXFLAGS =  -stdlib=libc++
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-PROGS = pop_test simulation_2_pops
+PROGS = simulation_2_pops simulation_agedist_2pops
 
 all: $(PROGS)
 
 # Create the library; ranlib is for Darwin (OS X) and maybe other systems.
 # Doesn't seem to do any damage on other systems.
 
-pop_test: pop_test.o population.o constants_runspec.o
+simulation_2_pops: population.o simulation.o simulation_2_pops.o constants_runspec.o
 
-simulation_2_pops: population.o event.o simulation.o simulation_2_pops.o event_tra_sicA_susA.o event_rec_sicA.o event_rec_carA.o event_tra_carA_susA.o event_inv_carA.o event_death_sicA.o event_tra_carA1_susA2.o event_tra_sicA1_susA2.o event_encounter.o constants_runspec.o
-
+simulation_agedist_2pops: population.o simulation.o simulation_2_pops.o constants_runspec.o
 # Phony targets
 .PHONY: all clean install
 

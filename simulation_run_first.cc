@@ -4,12 +4,7 @@
 #include <algorithm>
 
 #include "simulation.h"
-#include "event_tra_sicA_susA.h"
-#include "event_tra_carA_susA.h"
-#include "event_rec_sicA.h"
-#include "event_rec_carA.h"
-#include "event_inv_carA.h"
-#include "event_death_sicA.h"
+#include "eventlib/eventheaders.h"
 #include "population.h"
 #include "constants_runspec.h"
 
@@ -24,7 +19,7 @@ int main() {
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
     vector<Event*> events;
     Population pop(pop_init);
-    
+
     Event_tra_carA_susA ev1(pop);
     Event_inv_carA ev2(pop);
     Event_tra_sicA_susA ev3(pop);

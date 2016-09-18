@@ -9,7 +9,7 @@
 #include "constants_runspec.h"
 #include "population.h"
 #include "illegal_time_exception.h"
-#include "event.h"
+#include "eventlib/event.h"
 
 #ifndef SIMULATION_H
 #define SIMULATION_H

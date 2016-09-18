@@ -4,16 +4,7 @@
 #include <algorithm>
 
 #include "simulation.h"
-#include "event_tra_sicA_susA.h"
-#include "event_tra_carA_susA.h"
-#include "event_rec_sicA.h"
-#include "event_rec_carA.h"
-#include "event_inv_carA.h"
-#include "event_death_sicA.h"
-
-#include "event_encounter.h"
-#include "event_tra_carA1_susA2.h"
-#include "event_tra_sicA1_susA2.h"
+#include "eventlib/eventheaders.h"
 
 #include "population.h"
 #include "constants_runspec.h"
