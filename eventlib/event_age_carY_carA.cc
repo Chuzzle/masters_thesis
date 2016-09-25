@@ -8,5 +8,5 @@ double Event_age_carY_carA::update_prob(double t) {
 }
 
 void Event_age_carY_carA::execute_event() {
-  pop.move_pop("YOUNG_CARRIERS", "ADULT_CARRIERS")
+  pop.move_pop("YOUNG_CARRIERS", "ADULT_CARRIERS");
 }
