@@ -1,6 +1,6 @@
 #include "event.h"
 
-#ifndef EVENT_REC_SICI_H_H
+#ifndef EVENT_REC_SICI_H
 #define EVENT_REC_SICI_H
 
 class Event_rec_sicI : public Event{

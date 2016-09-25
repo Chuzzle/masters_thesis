@@ -1,9 +1,10 @@
 #include "simulation.h"
+#include <iostream>
 
 using namespace std;
 
-Simulation::Simulation(Population& population, const vector<Event*>& ev) : pop(population), events(ev), event_count(ev.size()) {
-  snaps[0.] = Population(pop);
+Simulation::Simulation(vector<Population>& populations, const vector<Event*>& ev) : pops(populations), events(ev), event_count(ev.size()) {
+  snaps[0.] = vector<Population>(pops);
   random_device rd;
   generator.seed(rd());
 }
@@ -14,13 +15,12 @@ void Simulation::simulate() {
 
   while (t <= constants.get_int("NUM_DAYS")) {
     sum_probs = 0.;
+
     for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t); return;});
-
     time_delta = -log(rnd_gen(generator)) / sum_probs;
-
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary. It does, however, make for more efficient measurements.
       t = floor(t+1);
-      snaps[t] = Population(pop);
+      snaps[t] = vector<Population>(pops);
       continue;
     }
 
@@ -32,17 +32,17 @@ void Simulation::simulate() {
     events[event_index]->execute_event();
 
     t += time_delta;
-    snaps[t] = Population(pop);
+    snaps[t] = vector<Population>(pops);
     ++event_count[event_index];
 
   }
   done = true;
 }
 
-Population Simulation::get_state_at(double t) {
+vector<Population> Simulation::get_state_at(double t) {
   if (t > constants.get_int("NUM_DAYS") || t < 0) throw Illegal_time_exception();
-  if (snaps.count(t) != 0) return Population(snaps[t]);
-  auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, Population>::value_type obj) {return obj.first > t;} );
+  if (snaps.count(t) != 0) return vector<Population>(snaps[t]);
+  auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, vector<Population>>::value_type obj) {return obj.first > t;} );
   --res;
-  return Population(res->second);
+  return vector<Population>(res->second);
 }

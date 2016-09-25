@@ -16,15 +16,15 @@
 
 class Simulation {
 public:
-  Simulation(Population& population,  const std::vector<Event*>& ev);
+  Simulation(std::vector<Population>& populations,  const std::vector<Event*>& ev);
   void simulate();
-  Population get_state_at(double t);
+  std::vector<Population> get_state_at(double t);
   std::vector<int> get_event_counts() {return std::vector<int>(event_count);};
   bool is_done() {return done;};
 private:
-  Population& pop;
+  std::vector<Population>& pops;
   std::vector<Event*> events;
-  std::map<double, Population> snaps;
+  std::map<double, std::vector<Population>> snaps;
   std::vector<int> event_count;
 
   std::default_random_engine generator;

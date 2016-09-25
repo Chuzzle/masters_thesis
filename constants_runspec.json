@@ -1,6 +1,7 @@
 {
   "NUM_DAYS" : 2000,
   "NUM_RUNS" : 10,
+  "NUMBER_OF_POPS" : 2,
 
   "DRY_START" : 61.0,
   "DRY_END" : 335.0,
