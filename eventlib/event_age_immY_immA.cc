@@ -3,7 +3,7 @@
 using namespace std;
 
 double Event_age_immY_immA::update_prob(double t) {
-  prob = constants.get_prob("PROB_AGING_YOUNG_ADULTS") * pop.get_pop("YOUNG_IMMUNE");
+  prob = constants.get_prob("PROB_AGING_YOUNG_ADULT") * pop.get_pop("YOUNG_IMMUNE");
   return prob;
 }
 

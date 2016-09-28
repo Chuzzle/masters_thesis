@@ -21,16 +21,16 @@ LDLIBS = -ljsoncpp -levents
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-PROGS = simulation_2_pops simulation_agedist_2pops
+PROGS = simulation_agedist_2pops
 
 all: $(PROGS)
 
 # Create the library; ranlib is for Darwin (OS X) and maybe other systems.
 # Doesn't seem to do any damage on other systems.
 
-simulation_2_pops: population.o simulation.o simulation_2_pops.o constants_runspec.o
+#simulation_2_pops: population.o simulation.o simulation_2_pops.o constants_runspec.o
 
-simulation_agedist_2pops: population.o simulation.o simulation_2_pops.o constants_runspec.o
+simulation_agedist_2pops: population.o simulation.o constants_runspec.o
 # Phony targets
 .PHONY: all clean install
 

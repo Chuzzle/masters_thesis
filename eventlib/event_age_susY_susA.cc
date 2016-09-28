@@ -3,7 +3,7 @@
 using namespace std;
 
 double Event_age_susY_susA::update_prob(double t) {
-  prob = constants.get_prob("PROB_AGING_YOUNG_ADULTS") * pop.get_pop("YOUNG_SUSC");
+  prob = constants.get_prob("PROB_AGING_YOUNG_ADULT") * pop.get_pop("YOUNG_SUSC");
   return prob;
 }
 

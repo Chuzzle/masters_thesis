@@ -1,5 +1,4 @@
 #include "simulation.h"
-#include <iostream>
 
 using namespace std;
 
@@ -34,7 +33,6 @@ void Simulation::simulate() {
     t += time_delta;
     snaps[t] = vector<Population>(pops);
     ++event_count[event_index];
-
   }
   done = true;
 }

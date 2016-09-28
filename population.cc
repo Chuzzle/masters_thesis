@@ -43,9 +43,9 @@ int Population::decrease_pop (string index) {
 }
 
 int Population::get_infectuous() {
-  int returnval = self.get_pop("INFANTS_INF") + self.get_pop("INFANTS_SICK") + pop.get_pop("INFANTS_CARRIERS");
-  returnval += self.get_pop("YOUNG_INF") + self.get_pop("YOUNG_SICK") + pop.get_pop("YOUNG_CARRIERS");
-  returnval += self.get_pop("ADULT_INF") + self.get_pop("ADULT_SICK") + pop.get_pop("ADULT_CARRIERS");
+  int returnval = this->get_pop("INFANTS_INF") + this->get_pop("INFANTS_SICK") + this->get_pop("INFANTS_CARRIERS");
+  returnval += this->get_pop("YOUNG_INF") + this->get_pop("YOUNG_SICK") + this->get_pop("YOUNG_CARRIERS");
+  returnval += this->get_pop("ADULT_INF") + this->get_pop("ADULT_SICK") + this->get_pop("ADULT_CARRIERS");
   return returnval;
 }
 

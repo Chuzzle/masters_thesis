@@ -8,6 +8,7 @@
 #include "event_birth.h"
 #include "event_death_carA.h"
 #include "event_death_immA.h"
+#include "event_death_susA.h"
 #include "event_death_sicA.h"
 #include "event_death_sicI.h"
 #include "event_death_sicY.h"
