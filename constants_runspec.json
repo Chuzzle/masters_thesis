@@ -1,5 +1,5 @@
 {
-  "NUM_DAYS" : 300,
+  "NUM_DAYS" : 1000,
   "NUM_RUNS" : 10,
   "NUMBER_OF_POPS" : 2,
 
@@ -27,7 +27,7 @@
   "INIT_adult_carriers" : 300,
   "INIT_adult_immune" : 0,
 
-  "PROB_TRANSMISSION" : 0.001,
+  "PROB_TRANSMISSION" : 0.0000008,
   "PROB_REC_SICA" : 0.14,
   "INVASIVENESS_A" : 0.0000014,
   "PROB_TRA_CARA_SUSA" : 0.00001,
