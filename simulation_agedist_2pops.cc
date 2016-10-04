@@ -11,7 +11,7 @@
 using namespace std;
 
 int main() {
-  Population pop_init;
+  //Population pop_init;
   Constants_runspec constants;
 
   ofstream res_file;
@@ -26,8 +26,7 @@ int main() {
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
     vector<Event*> events;
     vector<Population> pops;
-    pops.push_back(Population());
-    pops.push_back(Population());
+    for (int nn = 0; nn!= constants.get_int("NUMBER_OF_POPS"); ++nn) pops.push_back(Population());
 
     Event_age_carI_carY ev1(pops[0]);
     Event_age_carY_carA ev2(pops[0]);
@@ -127,6 +126,7 @@ int main() {
     events.push_back(&ev25);
     events.push_back(&ev26);
     events.push_back(&ev27);
+    events.push_back(&ev28);
     events.push_back(&ev29);
     events.push_back(&ev30);
     events.push_back(&ev31);

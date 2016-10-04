@@ -31,17 +31,20 @@ def main(argv):
 
                 sum_susc[k][n][j] += data[k][n][j][constants['ADULT_SUSC']] + data[k][n][j][constants['INFANTS_SUSC']] + data[k][n][j][constants['YOUNG_SUSC']]
 
+    sum_total = sum_susc + sum_carriers + sum_sick + sum_immune
+
     #Plot the sick from all runs in one fig and so on
     time = range(0, constants['NUM_DAYS'])
     for n in xrange(constants['NUM_RUNS']):
-        plt.figure('Sick')
-        plt.plot(time, sum_sick[n,:,0], time, sum_sick[n,:,1])
-        plt.figure('Carriers')
-        plt.plot(time, sum_carriers[n,:,0], time, sum_carriers[n,:,1])
-        plt.figure('Immune')
-        plt.plot(time, sum_immune[n,:,0], time, sum_immune[n,:,1])
-        plt.figure('Susceptibles')
-        plt.plot(time, sum_susc[n,:,0], time, sum_susc[n,:,1])
+        for k in xrange(constants['NUMBER_OF_POPS']):
+            plt.figure('Sick')
+            plt.plot(time, sum_sick[n,:,k])
+            plt.figure('Carriers')
+            plt.plot(time, sum_carriers[n,:,k])
+            plt.figure('Immune')
+            plt.plot(time, sum_immune[n,:,k])
+            plt.figure('Susceptibles')
+            plt.plot(time, sum_susc[n,:,k])
 
     # plot the average from all runs.
     avg_sick = np.mean(sum_sick, (0,2))
@@ -58,6 +61,59 @@ def main(argv):
     plt.plot(time, avg_immune)
     plt.subplot(2, 2, 4)
     plt.plot(time, avg_susc)
+
+    ratio_carriers = sum_carriers / sum_total
+    ratio_immune = sum_immune / sum_total
+    ratio_susc = sum_susc / sum_total
+
+    plt.figure('Ratios')
+    for n in xrange(constants['NUM_RUNS']):
+        for k in xrange(constants['NUMBER_OF_POPS']):
+            plt.subplot(3,1,1)
+            plt.plot(time, ratio_carriers[n,:,k])
+            plt.subplot(3,1,2)
+            plt.plot(time, ratio_immune[n,:,k])
+            plt.subplot(3,1,3)
+            plt.plot(time, ratio_susc[n,:,k])
+
+    plt.figure('Ratios')
+    plt.subplot(3,1,1)
+    plt.title('Ratio of carriers')
+    plt.subplot(3,1,2)
+    plt.title('Ratio of immune')
+    plt.subplot(3,1,3)
+    plt.title('Ratio of susceptible')
+
+    # Format the plots. Differs from run to run
+
+    plt.figure('Sick')
+    plt.title('Total number of sick in all populations and age groups')
+    #plt.ylim([0, 10])
+
+    plt.figure('Carriers')
+    plt.title('Total number of carriers in all populations and age groups')
+    #plt.ylim([200, 800])
+
+    plt.figure('Immune')
+    plt.title('Total number of immune in all populations and age groups')
+
+
+    plt.figure('Susceptibles')
+    plt.title('Total number of susceptible individuals in the population')
+    #plt.ylim([5000, 12000])
+
+    plt.figure('Averages')
+    plt.subplot(2,2,1)
+    plt.title('Average number of sick')
+
+    plt.subplot(2,2,2)
+    plt.title('Average number of carriers')
+
+    plt.subplot(2,2,3)
+    plt.title('Average number of immune')
+
+    plt.subplot(2,2,4)
+    plt.title('Average number of susceptible')
 
     plt.show()
 
