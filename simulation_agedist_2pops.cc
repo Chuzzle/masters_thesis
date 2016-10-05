@@ -15,7 +15,8 @@ int main() {
   Constants_runspec constants;
 
   ofstream res_file;
-  res_file.open("data/simulation_agedist_2_pops.txt");
+  string output_file_name = constants.get_string("OUTPUT_FILE");
+  res_file.open("data/" + output_file_name + ".txt");
   if(!res_file.is_open())  {
     cerr << "Could not open the results file. If the folder 'data' does not exist, try creating it" << endl;
     return 1;

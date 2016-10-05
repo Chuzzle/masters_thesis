@@ -15,7 +15,8 @@ int main() {
   Constants_runspec constants;
 
   ofstream res_file;
-  res_file.open("data/simulation_basepop.txt");
+  string res_file_name = constants.get_string("OUTPUT_FILE");
+  res_file.open("data/" + res_file_name + ".txt");
   if(!res_file.is_open()) {
     cerr << "Coul not open the results file. If the folder 'data' does not exist, try creating it" << endl;
     return 1;

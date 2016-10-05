@@ -35,3 +35,11 @@ int Constants_runspec::is_dry(double t) {
   while (t > 365.0) t -= 365.;
   return (t > this->get_prob("DRY_START")) && (t < this->get_prob("DRY_END"));
 }
+
+string Constants_runspec::get_string(string key) {
+  if (constants.isMember(key) && constants[key].isString()) {
+    return constants[key].asString();
+  }
+  cerr << "Error in the constants formatting; check your string formats." << endl;
+  exit(1);
+}

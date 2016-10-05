@@ -15,7 +15,8 @@ int main() {
   Constants_runspec constants;
 
   ofstream res_file;
-  res_file.open("data/simulation_input.txt");
+  string res_file_name = constants.get_string("OUTPUT_FILE");
+  res_file.open("data/" + res_file_name + ".txt");
   if(!res_file.is_open())  {
     cerr << "Could not open the results file. If the folder 'data' does not exist, try creating it" << endl;
     return 1;
@@ -24,10 +25,11 @@ int main() {
   res_file << constants.get_int("NUM_DAYS") << endl;
 
   // Read the results from a previous simulation -> should probably just find the last line
-  vector<int> initial_pops(constants.get_int("NUMBER_OF_POPS") * constants.get_int("NUM_POPS"));
+  vector<int> initial_pops(constants.get_int("NUM_POPS"));
 
   ifstream inp_file;
-  inp_file.open("data/simulation_agedist_bigpop.txt");
+  string input_file_name = constants.get_string("INPUT_FILE");
+  inp_file.open("data/" + input_file_name + ".txt");
   if(!inp_file.is_open()) {
     cerr << "Error opening the input file." << endl;
     return 1;
@@ -43,7 +45,7 @@ int main() {
 
   int k;
   inp_file >> k;
-  for (int n = 0; n != constants.get_int("NUMBER_OF_POPS") * constants.get_int("NUM_POPS"); ++n) {
+  for (int n = 0; n != constants.get_int("NUM_POPS"); ++n) {
     inp_file >> k;
     initial_pops[n] = k;
   }
@@ -61,7 +63,7 @@ int main() {
     Event_age_immY_immA ev4(pops[0]);
     Event_age_susI_susY ev5(pops[0]);
     Event_age_susY_susA ev6(pops[0]);
-    
+
     Event_birth ev7(pops[0]);
     Event_death_carA ev8(pops[0]);
     Event_death_susA ev9(pops[0]);

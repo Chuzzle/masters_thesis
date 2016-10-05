@@ -15,6 +15,7 @@ public:
   int get_int(std::string key);
   int is_dry(double t);
   bool is_encountered() {return encounter_active;};
+  std::string get_string(std::string key);
   friend class Event_encounter;
 private:
   Json::Value constants;
