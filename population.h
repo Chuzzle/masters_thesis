@@ -10,6 +10,7 @@
 class Population {
 public:
   Population();
+  Population(std::vector<int> initializer) : populations(initializer) {};
 
   int get_pop(std::string index);
   int get_pop(int index);
