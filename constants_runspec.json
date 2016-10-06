@@ -3,8 +3,8 @@
   "NUM_RUNS" : 10,
   "NUMBER_OF_POPS" : 2,
 
-  "OUTPUT_FILE" : "simulation_2pops_5000days_10000individs",
-  "INPUT_FILE" : "none",
+  "OUTPUT_FILE" : "simulation_2pops_5000days_10000individs_input",
+  "INPUT_FILE" : "simulation_2pops_5000days_10000individs",
 
   "DRY_START" : 61.0,
   "DRY_END" : 335.0,

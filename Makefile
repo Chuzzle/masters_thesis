@@ -21,7 +21,7 @@ LDLIBS = -ljsoncpp -levents
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-PROGS = simulation_agedist_2pops simulation_basepop simulation_agedist_1pop simulation_input
+PROGS = simulation_agedist_2pops simulation_basepop simulation_agedist_1pop simulation_input simulation_2pops_input
 
 all: $(PROGS)
 
@@ -38,6 +38,7 @@ simulation_agedist_1pop: population.o simulation.o constants_runspec.o
 
 simulation_input: population.o simulation.o constants_runspec.o
 
+simulation_2pops_input: population.o simulation.o constants_runspec.o
 # Phony targets
 .PHONY: all clean install
 
