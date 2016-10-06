@@ -31,7 +31,7 @@ void Simulation::simulate() {
     events[event_index]->execute_event();
 
     t += time_delta;
-    snaps[t] = vector<Population>(pops);
+    //snaps[t] = vector<Population>(pops);
     ++event_count[event_index];
   }
   done = true;
