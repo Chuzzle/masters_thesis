@@ -1,9 +1,9 @@
 {
-  "NUM_DAYS" : 10000,
+  "NUM_DAYS" : 100,
   "NUM_RUNS" : 10,
   "NUMBER_OF_POPS" : 1,
 
-  "OUTPUT_FILE" : "simulation_bigpop_10000days_withdoubleinput",
+  "OUTPUT_FILE" : "test",
   "INPUT_FILE" : "simulation_bigpop_10000days_withinput",
   "OUTPUT_NAME" : "testing_setup_function",
   "INPUT" : 0,

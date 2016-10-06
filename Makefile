@@ -40,7 +40,7 @@ simulation_input: population.o simulation.o constants_runspec.o
 
 simulation_2pops_input: population.o simulation.o constants_runspec.o
 
-run_simulation: population.o simulation.o constants_runspec.o
+run_simulation: population.o simulation.o constants_runspec.o events_wrapper.o
 # Phony targets
 .PHONY: all clean install
 
