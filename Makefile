@@ -16,12 +16,12 @@ CXXFLAGS += -g
 
 LDFLAGS += -L.
 LDFLAGS += -L eventlib
-LDLIBS = -ljsoncpp -levents
+LDLIBS = -ljsoncpp -levents -lboost_filesystem -lboost_system
 #CXXFLAGS =  -stdlib=libc++
 #CPPFLAGS =  -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 
-PROGS = simulation_agedist_2pops simulation_basepop simulation_agedist_1pop simulation_input simulation_2pops_input
+PROGS = simulation_agedist_2pops simulation_basepop simulation_agedist_1pop simulation_input simulation_2pops_input run_simulation
 
 all: $(PROGS)
 
@@ -39,6 +39,8 @@ simulation_agedist_1pop: population.o simulation.o constants_runspec.o
 simulation_input: population.o simulation.o constants_runspec.o
 
 simulation_2pops_input: population.o simulation.o constants_runspec.o
+
+run_simulation: population.o simulation.o constants_runspec.o
 # Phony targets
 .PHONY: all clean install
 
