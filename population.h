@@ -9,7 +9,7 @@
 
 class Population {
 public:
-  Population();
+  explicit Population();
   Population(std::vector<int> initializer) : populations(initializer) {};
 
   int get_pop(std::string index);

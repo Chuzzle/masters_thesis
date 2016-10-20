@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include <typeinfo>
 
 #define BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/filesystem.hpp>
@@ -99,8 +98,9 @@ int main() {
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
       // Initialize populations
       vector<Population> pops;
-      for (int n = 0; n!= constants.get_int("NUMBER_OF_POPS"); ++n) pops.push_back(Population(pop_init));
-
+      for (int n = 0; n!= constants.get_int("NUMBER_OF_POPS"); ++n) {
+        pops.push_back(Population(pop_init));
+      }
       //Initialize events
       Events_wrapper ev;
       vector<Event*> event_pointers = ev.initialize_events(pops);
