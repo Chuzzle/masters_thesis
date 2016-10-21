@@ -72,7 +72,7 @@ def run(pars):
         #for k in xrange(10):
             raw_data_str = 'Raw data'
             plot_pop(constants, full_data[k][n], nonzero_pop_indices, raw_data_str, legend = False)
-        plot_pop(constants, averages[n], nonzero_pop_indices, 'Average data')
+        plot_pop(constants, averages[n], nonzero_pop_indices, 'Average data' + str(n))
 
     grouped_averages = []
     grouped_ratios = []
@@ -81,10 +81,10 @@ def run(pars):
     for n in xrange(constants['NUMBER_OF_POPS']):
         group_ave, indices_ave = group_by_disease(constants, averages[n])
         grouped_averages.append(group_ave)
-        plot_pop(constants, group_ave, indices_ave, 'Results grouped by disease status')
+        plot_pop(constants, group_ave, indices_ave, 'Results grouped by disease status' + str(n))
         group_ratio, indices_ratio = group_by_disease(constants, average_ratio[n])
         grouped_ratios.append(group_ratio)
-        plot_pop(constants, group_ratio, indices_ratio, 'Ratios grouped by disease status')
+        plot_pop(constants, group_ratio, indices_ratio, 'Ratios grouped by disease status' + str(n))
 
     #for n in xrange(constants['NUMBER_OF_POPS']):
 
@@ -98,7 +98,9 @@ def read_constants(directory_name):
     return constants
 
 def read_data_file(constants, directory_name, number):
-    return_data = [np.zeros((constants['NUM_POPS'], constants['NUM_DAYS']), dtype = np.int)] * constants['NUMBER_OF_POPS']
+    base_mat = np.zeros((constants['NUM_POPS'], constants['NUM_DAYS']), dtype = np.int)
+    return_data = [np.copy(base_mat) for _ in xrange(constants['NUMBER_OF_POPS'])]
+    # return_data = [np.zeros((constants['NUM_POPS'], constants['NUM_DAYS']), dtype = np.int)] * constants['NUMBER_OF_POPS']
     here_dir = os.path.dirname(os.path.relpath(__file__))
     file_name = here_dir + '/../data/' + directory_name + '/simulation_results' + str(number) + '.txt'
     with open(file_name) as data_file:

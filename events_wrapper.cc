@@ -99,7 +99,7 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
       Event_noninv_infI* ev = new Event_noninv_infI(pops[n]);
       event_list.push_back(ev);
     }
-    if (events["event_oninv_infY"].asInt()) {
+    if (events["event_noninv_infY"].asInt()) {
       Event_noninv_infY* ev = new Event_noninv_infY(pops[n]);
       event_list.push_back(ev);
     }
@@ -131,6 +131,18 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
       Event_rec_sicA* ev = new Event_rec_sicA(pops[n]);
       event_list.push_back(ev);
     }
+    if (events["event_tra_immA"].asInt()) {
+      Event_tra_immA* ev = new Event_tra_immA(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_tra_immI"].asInt()) {
+      Event_tra_immI* ev = new Event_tra_immI(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_tra_immY"].asInt()) {
+      Event_tra_immY* ev = new Event_tra_immY(pops[n]);
+      event_list.push_back(ev);
+    }
   }
   if (events["event_encounter"].asInt()) {
     Event_encounter* ev = new Event_encounter(pops[0], pops[1]);
@@ -138,9 +150,17 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
     Event_external_tra_susY* ev2 = new Event_external_tra_susY(pops[0], pops[1]);
     Event_external_tra_susI* ev3 = new Event_external_tra_susI(pops[0], pops[1]);
 
-    Event_external_tra_susA* ev4 = new Event_external_tra_susA(pops[1], pops[0]);
-    Event_external_tra_susY* ev5 = new Event_external_tra_susY(pops[1], pops[0]);
-    Event_external_tra_susI* ev6 = new Event_external_tra_susI(pops[1], pops[0]);
+    Event_external_tra_immA* ev4 = new Event_external_tra_immA(pops[0], pops[1]);
+    Event_external_tra_immY* ev5 = new Event_external_tra_immY(pops[0], pops[1]);
+    Event_external_tra_immI* ev6 = new Event_external_tra_immI(pops[0], pops[1]);
+
+    Event_external_tra_susA* ev7 = new Event_external_tra_susA(pops[1], pops[0]);
+    Event_external_tra_susY* ev8 = new Event_external_tra_susY(pops[1], pops[0]);
+    Event_external_tra_susI* ev9 = new Event_external_tra_susI(pops[1], pops[0]);
+
+    Event_external_tra_immA* ev10 = new Event_external_tra_immA(pops[1], pops[0]);
+    Event_external_tra_immY* ev11 = new Event_external_tra_immY(pops[1], pops[0]);
+    Event_external_tra_immI* ev12 = new Event_external_tra_immI(pops[1], pops[0]);
 
     event_list.push_back(ev);
     event_list.push_back(ev1);
@@ -149,6 +169,12 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
     event_list.push_back(ev4);
     event_list.push_back(ev5);
     event_list.push_back(ev6);
+    event_list.push_back(ev7);
+    event_list.push_back(ev8);
+    event_list.push_back(ev9);
+    event_list.push_back(ev10);
+    event_list.push_back(ev11);
+    event_list.push_back(ev12);
   }
   return event_list;
 }

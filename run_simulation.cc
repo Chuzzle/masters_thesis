@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
-
+#include <iostream>
 #define BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/filesystem.hpp>
 #undef BOOST_NO_CXX11_SCOPED_ENUMS
@@ -38,9 +38,11 @@ vector<int> read_population() {
 
   int k;
   inp_file >> k;
+  cout << k << endl;
   for (int n = 0; n != constants.get_int("NUM_POPS"); ++n) {
     inp_file >> k;
     initial_pops[n] = k;
+    cout << k << endl;
   }
 
   inp_file.close();
@@ -98,8 +100,18 @@ int main() {
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
       // Initialize populations
       vector<Population> pops;
-      for (int n = 0; n!= constants.get_int("NUMBER_OF_POPS"); ++n) {
+      if (constants.get_int("SYMMETRIC") == 1) {
+        for (int n = 0; n!= constants.get_int("NUMBER_OF_POPS"); ++n) {
+          pops.push_back(Population(pop_init));
+        }
+      }
+      else {
+        if (constants.get_int("NUMBER_OF_POPS") != 2) {
+          cerr << "Illegal number of populations for an asymmetric intialization" << endl;
+          exit(1);
+        }
         pops.push_back(Population(pop_init));
+        pops.push_back(Population());
       }
       //Initialize events
       Events_wrapper ev;
