@@ -145,6 +145,7 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
     }
   }
   if (events["event_encounter"].asInt()) {
+    if (constants.get_int("NUMBER_OF_POPS") < 2) throw Illegal_event_exception(); 
     Event_encounter* ev = new Event_encounter(pops[0], pops[1]);
     Event_external_tra_susA* ev1 = new Event_external_tra_susA(pops[0], pops[1]);
     Event_external_tra_susY* ev2 = new Event_external_tra_susY(pops[0], pops[1]);
