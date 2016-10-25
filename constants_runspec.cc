@@ -2,6 +2,8 @@
 
 using namespace std;
 
+bool Constants_runspec::encounter_active = false;
+
 Constants_runspec::Constants_runspec() {
   ifstream inp_stream;
   inp_stream.open("constants_runspec.json");

@@ -18,5 +18,5 @@ double Event_encounter::update_prob(double t) {
 }
 
 void Event_encounter::execute_event() {
-  constants.encounter_active = !constants.encounter_active;
+  Constants_runspec::encounter_active = !Constants_runspec::encounter_active;
 }

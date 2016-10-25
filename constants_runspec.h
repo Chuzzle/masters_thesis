@@ -19,7 +19,7 @@ public:
   friend class Event_encounter;
 private:
   Json::Value constants;
-  bool encounter_active = false;
+  static bool encounter_active;
 };
 
 #endif

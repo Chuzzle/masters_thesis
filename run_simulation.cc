@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
-#include <iostream>
+
 #define BOOST_NO_CXX11_SCOPED_ENUMS
 #include <boost/filesystem.hpp>
 #undef BOOST_NO_CXX11_SCOPED_ENUMS
@@ -85,7 +85,7 @@ void print_res(Simulation& sim, string dir_path, int simulation_index) {
 int main() {
 
   string dir_path = "data/" + constants.get_string("OUTPUT_NAME");
-  //boost::filesystem::path dir_path = "data/" + dir_path_str;
+
   if(boost::filesystem::is_directory(dir_path)) {
     cerr << "This simulation already exists, delete it to continue" << endl;
     exit(1);
@@ -110,26 +110,29 @@ int main() {
 
   // Run simulation
   for (int n = 0; n != constants.get_int("NUM_RUNS"); ++n) {
-      // Initialize populations
-      vector<Population> pops;
-      if (constants.get_int("SYMMETRIC") == 1) {
-        for (int n = 0; n!= constants.get_int("NUMBER_OF_POPS"); ++n) {
-          pops.push_back(Population(pop_init));
-        }
-      }
-      else {
-        if (constants.get_int("NUMBER_OF_POPS") != 2) {
-          cerr << "Illegal number of populations for an asymmetric intialization" << endl;
-          exit(1);
-        }
+    cout << "Starting simulation" << endl;
+    // Initialize populations
+    vector<Population> pops;
+    if (constants.get_int("SYMMETRIC") == 1) {
+      for (int n = 0; n!= constants.get_int("NUMBER_OF_POPS"); ++n) {
         pops.push_back(Population(pop_init));
-        pops.push_back(Population());
       }
-      //Initialize events
-      Events_wrapper ev;
-      vector<Event*> event_pointers = ev.initialize_events(pops);
-      Simulation sim(pops, event_pointers);
-      sim.simulate();
-      print_res(sim, dir_path, n);
+    }
+    else {
+      if (constants.get_int("NUMBER_OF_POPS") != 2) {
+        cerr << "Illegal number of populations for an asymmetric intialization" << endl;
+        exit(1);
+      }
+      pops.push_back(Population(pop_init));
+      pops.push_back(Population());
+    }
+
+    //Initialize events
+    Events_wrapper ev;
+    vector<Event*> event_pointers = ev.initialize_events(pops);
+
+    Simulation sim(pops, event_pointers);
+    sim.simulate();
+    print_res(sim, dir_path, n);
   }
 }

@@ -9,12 +9,12 @@ Simulation::Simulation(vector<Population>& populations, const vector<Event*>& ev
 }
 
 void Simulation::simulate() {
+
   int event_index;
   double t = 0.01, sum_probs = 0., time_delta, event_help, cum_probs;
 
   while (t <= constants.get_int("NUM_DAYS")) {
     sum_probs = 0.;
-
     for_each(events.begin(), events.end(), [&] (Event* ev) {sum_probs += ev->update_prob(t); return;});
     time_delta = -log(rnd_gen(generator)) / sum_probs;
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary. It does, however, make for more efficient measurements.
@@ -29,7 +29,6 @@ void Simulation::simulate() {
       if (cum_probs >= event_help) break;
     }
     events[event_index]->execute_event();
-
     t += time_delta;
     //snaps[t] = vector<Population>(pops);
     ++event_count[event_index];

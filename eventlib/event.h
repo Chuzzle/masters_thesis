@@ -2,8 +2,8 @@
 #include <random>
 #include <cmath>
 
-#include "population.h"
-#include "constants_runspec.h"
+#include "../population.h"
+#include "../constants_runspec.h"
 
 #ifndef EVENT_H
 #define EVENT_H
