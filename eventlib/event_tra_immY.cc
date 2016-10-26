@@ -3,7 +3,7 @@
 using namespace std;
 
 double Event_tra_immY::update_prob(double t) {
-  prob = constants.get_prob("PROB_TRA_IMM") * pop.get_infectuous() * pop.get_pop("YOUNG_IMMUNE");
+  prob = constants.get_prob("PROB_TRA_IMM") * pop.get_infectuous() * pop.get_pop("YOUNG_IMMUNE") / pop.get_total_pop();
   return prob;
 }
 

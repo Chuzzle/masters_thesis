@@ -32,7 +32,7 @@ int Population::get_pop (int index) {
 }
 
 int Population::get_total_pop() {
-  sum = 0;
+  int sum = 0;
   for_each(populations.begin(), populations.end(), [&] (int n) {sum += n;});
   return sum;
 }

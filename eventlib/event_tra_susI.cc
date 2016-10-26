@@ -3,7 +3,7 @@
 using namespace std;
 
 double Event_tra_susI::update_prob(double t) {
-  prob = constants.get_prob("PROB_TRANSMISSION") * pop.get_infectuous() * pop.get_pop("INFANTS_SUSC");
+  prob = constants.get_prob("PROB_TRANSMISSION") * pop.get_infectuous() * pop.get_pop("INFANTS_SUSC") / pop.get_total_pop();
   return prob;
 }
 
