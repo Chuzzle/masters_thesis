@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #include "illegal_event_exception.h"
 #include "constants_runspec.h"
@@ -14,6 +15,7 @@ public:
 
   int get_pop(std::string index);
   int get_pop(int index);
+  int get_total_pop();
   int get_infectuous();
 
   int move_pop(std::string move_from, std::string move_to);
