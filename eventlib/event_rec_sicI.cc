@@ -8,5 +8,5 @@ double Event_rec_sicI::update_prob(double t) {
 }
 
 void Event_rec_sicI::execute_event() {
-  pop.move_pop("INFANTS_SICK", "INFANTS_IMMUNE");
+  pop.move_pop("INFANTS_SICK", "INFANTS_IMMUNE_PER");
 }

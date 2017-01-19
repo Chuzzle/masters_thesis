@@ -8,5 +8,5 @@ double Event_rec_sicA::update_prob(double t) {
 }
 
 void Event_rec_sicA::execute_event() {
-  pop.move_pop("ADULT_SICK", "ADULT_IMMUNE");
+  pop.move_pop("ADULT_SICK", "ADULT_IMMUNE_PER");
 }

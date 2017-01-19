@@ -1,0 +1,12 @@
+#include "event_rec_carA_immPerA.h"
+
+using namespace std;
+
+double Event_rec_carA_immPerA::update_prob(double t) {
+  prob = constants.get_prob("PROB_REC_CAR_IMM") * pop.get_pop("ADULT_CARRIERS");
+  return prob;
+}
+
+void Event_rec_carA_immPerA::execute_event() {
+  pop.move_pop("ADULT_CARRIERS", "ADULT_IMMUNE_PER");
+}

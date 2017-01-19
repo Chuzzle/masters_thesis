@@ -115,8 +115,12 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
       Event_rec_carY* ev = new Event_rec_carY(pops[n]);
       event_list.push_back(ev);
     }
-    if (events["event_rec_carA"].asInt()) {
-      Event_rec_carA* ev = new Event_rec_carA(pops[n]);
+    if (events["event_rec_carA_immA"].asInt()) {
+      Event_rec_carA_immA* ev = new Event_rec_carA_immA(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_rec_carA_immPerA"].asInt()) {
+      Event_rec_carA_immPerA* ev = new Event_rec_carA_immPerA(pops[n]);
       event_list.push_back(ev);
     }
     if (events["event_rec_sicI"].asInt()) {
@@ -143,9 +147,21 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
       Event_tra_immY* ev = new Event_tra_immY(pops[n]);
       event_list.push_back(ev);
     }
+    if (events["event_rec_immI"].asInt()) {
+      Event_rec_immI* ev = new Event_rec_immI(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_rec_immY"].asInt()) {
+      Event_rec_immY* ev = new Event_rec_immY(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_rec_immA"].asInt()) {
+      Event_rec_immA* ev = new Event_rec_immA(pops[n]);
+      event_list.push_back(ev);
+    }
   }
   if (events["event_encounter"].asInt()) {
-    if (constants.get_int("NUMBER_OF_POPS") < 2) throw Illegal_event_exception(); 
+    if (constants.get_int("NUMBER_OF_POPS") < 2) throw Illegal_event_exception();
     Event_encounter* ev = new Event_encounter(pops[0], pops[1]);
     Event_external_tra_susA* ev1 = new Event_external_tra_susA(pops[0], pops[1]);
     Event_external_tra_susY* ev2 = new Event_external_tra_susY(pops[0], pops[1]);

@@ -8,18 +8,21 @@ Population::Population() : constants(), populations(constants.get_int("NUM_POPS"
   populations[constants.get_int("INFANTS_SICK")] = constants.get_int("INIT_infants_sick");
   populations[constants.get_int("INFANTS_CARRIERS")] = constants.get_int("INIT_infants_carriers");
   populations[constants.get_int("INFANTS_IMMUNE")] = constants.get_int("INIT_infants_immune");
+  populations[constants.get_int("INFANTS_IMMUNE_PER")] = constants.get_int("INIT_infants_immune_per");
 
   populations[constants.get_int("YOUNG_SUSC")] = constants.get_int("INIT_young_susc");
   populations[constants.get_int("YOUNG_INF")] = constants.get_int("INIT_young_inf");
   populations[constants.get_int("YOUNG_SICK")] = constants.get_int("INIT_young_sick");
   populations[constants.get_int("YOUNG_CARRIERS")] = constants.get_int("INIT_young_carriers");
   populations[constants.get_int("YOUNG_IMMUNE")] = constants.get_int("INIT_young_immune");
+  populations[constants.get_int("YOUNG_IMMUNE_PER")] = constants.get_int("INIT_young_immune_per");
 
   populations[constants.get_int("ADULT_SUSC")] = constants.get_int("INIT_adult_susc");
   populations[constants.get_int("ADULT_INF")] = constants.get_int("INIT_adult_inf");
   populations[constants.get_int("ADULT_SICK")] = constants.get_int("INIT_adult_sick");
   populations[constants.get_int("ADULT_CARRIERS")] = constants.get_int("INIT_adult_carriers");
   populations[constants.get_int("ADULT_IMMUNE")] = constants.get_int("INIT_adult_immune");
+  populations[constants.get_int("ADULT_IMMUNE_PER")] = constants.get_int("INIT_adult_immune_per");
 }
 
 int Population::get_pop (string index) {
