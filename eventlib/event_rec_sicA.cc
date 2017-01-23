@@ -3,7 +3,7 @@
 using namespace std;
 
 double Event_rec_sicA::update_prob(double t) {
-  prob = constants.get_prob("PROB_REC_SICA") * pop.get_pop("ADULT_SICK");
+  prob = constants.get_prob("PROB_REC_SIC") * pop.get_pop("ADULT_SICK");
   return prob;
 }
 

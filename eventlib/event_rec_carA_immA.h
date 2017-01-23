@@ -1,6 +1,6 @@
 #include "event.h"
 
-#ifndef EVENT_REC_CARA__IMMA_H
+#ifndef EVENT_REC_CARA_IMMA_H
 #define EVENT_REC_CARA_IMMA_H
 
 class Event_rec_carA_immA : public Event {
