@@ -3,7 +3,7 @@
 using namespace std;
 
 double Event_rec_carA_imm::update_prob(double t) {
-  prob = constants.get_prob("PROB_REC_CAR_IMMA") * pop.get_pop("ADULT_CARRIERS");
+  prob = constants.get_prob("PROB_REC_CARA_IMM") * pop.get_pop("ADULT_CARRIERS");
   return prob;
 }
 

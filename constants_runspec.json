@@ -1,11 +1,11 @@
 {
-  "NUM_DAYS" : 3000,
+  "NUM_DAYS" : 300,
   "NUM_RUNS" : 5,
   "NUMBER_OF_POPS" : 1,
   "SYMMETRIC" : 1,
 
   "INPUT_FILE" : "test1/simulation_results0",
-  "OUTPUT_NAME" : "test_nodisease0",
+  "OUTPUT_NAME" : "testiggytest",
   "INPUT" : 0,
 
   "DRY_START" : 61.0,
@@ -45,17 +45,17 @@
 
   "PROB_INVASION" : 0.0000014,
   "PROB_REC_CARA_IMM" : 0.0066,
-  "PROB_REC_CARA_NOIMM" : 0,
-  "PROB_REC_CARA_IMM_PER" : 0,
+  "PROB_REC_CARA_NOIMM" : 0.0,
+  "PROB_REC_CARA_IMM_PER" : 0.0,
   "PROB_REC_CARY_IMM" : 0.0066,
-  "PROB_REC_CARY_NOIMM" : 0,
+  "PROB_REC_CARY_NOIMM" : 0.0,
   "PROB_REC_CARI_IMM" : 0.0066,
-  "PROB_REC_CARI_NOIMM" : 0,
+  "PROB_REC_CARI_NOIMM" : 0.0,
   "PROB_NON_INVASION" : 0.14,
 
-  "PROB_REC_IMMI" : 0,
-  "PROB_REC_IMMY" : 0,
-  "PROB_REC_IMMA" : 0,
+  "PROB_REC_IMMI" : 0.0,
+  "PROB_REC_IMMY" : 0.0,
+  "PROB_REC_IMMA" : 0.0,
 
   "PROB_AGING_INF_YOU" : 0.00068,
   "PROB_AGING_YOUNG_ADULT" : 0.00027,

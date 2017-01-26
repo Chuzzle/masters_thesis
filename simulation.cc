@@ -1,5 +1,5 @@
 #include "simulation.h"
-
+#include <iostream>
 using namespace std;
 
 Simulation::Simulation(vector<Population>& populations, const vector<Event*>& ev) : pops(populations), events(ev), event_count(ev.size()) {
