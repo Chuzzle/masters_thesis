@@ -107,16 +107,28 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
       Event_noninv_infA* ev = new Event_noninv_infA(pops[n]);
       event_list.push_back(ev);
     }
-    if (events["event_rec_carI"].asInt()) {
-      Event_rec_carI* ev = new Event_rec_carI(pops[n]);
+    if (events["event_rec_carI_imm"].asInt()) {
+      Event_rec_carI_imm* ev = new Event_rec_carI_imm(pops[n]);
       event_list.push_back(ev);
     }
-    if (events["event_rec_carY"].asInt()) {
-      Event_rec_carY* ev = new Event_rec_carY(pops[n]);
+    if (events["event_rec_carI_noImm"].asInt()) {
+      Event_rec_carI_noImm* ev = new Event_rec_carI_noImm(pops[n]);
       event_list.push_back(ev);
     }
-    if (events["event_rec_carA_immA"].asInt()) {
-      Event_rec_carA_immA* ev = new Event_rec_carA_immA(pops[n]);
+    if (events["event_rec_carY_imm"].asInt()) {
+      Event_rec_carY_imm* ev = new Event_rec_carY_imm(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_rec_carY_noImm"].asInt()) {
+      Event_rec_carY_noImm* ev = new Event_rec_carY_noImm(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_rec_carA_imm"].asInt()) {
+      Event_rec_carA_imm* ev = new Event_rec_carA_imm(pops[n]);
+      event_list.push_back(ev);
+    }
+    if (events["event_rec_carA_noImm"].asInt()) {
+      Event_rec_carA_noImm* ev = new Event_rec_carA_noImm(pops[n]);
       event_list.push_back(ev);
     }
     if (events["event_rec_carA_immPerA"].asInt()) {
