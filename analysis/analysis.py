@@ -9,8 +9,6 @@ import copy
 
 # The run-method currently reads data from file and produces an average from all runs (over all sub-populations seperately). The std:s between simulation runs is also iteratively calculated.
 # It then plots the averages, grouped by disease status.
-# TODO: Plot all results together with the average to see whether it looks reasonable
-# TODO: Look at the distributions of disease within age groups
 
 def run(pars):
     # The input parameter should be the name of the super folder which holds the simulation results
@@ -58,8 +56,7 @@ def run(pars):
 
     # The dictionary below connects the string holding the name of the population to the index it has in the data structure. Allows for a more generic plot function.
     # TODO: change this section if vaccination is implemented.
-    # TODO: Have the indices read more easily
-    nonzero_pop_indices = {"INFANTS_SUSC" : 0, "INFANTS_INF" : 1, "INFANTS_SICK" : 2, "INFANTS_CARRIERS" : 3, "INFANTS_IMMUNE" : 4, "YOUNG_SUSC" : 6, "YOUNG_INF" : 7, "YOUNG_SICK" : 8, "YOUNG_CARRIERS" : 9, "YOUNG_IMMUNE" : 10, "ADULT_SUSC" : 12, "ADULT_INF" : 13, "ADULT_SICK" : 14, "ADULT_CARRIERS" : 15, "ADULT_IMMUNE" : 16}
+    nonzero_pop_indices = {"I, Susceptible" : constants['INFANTS_SUSC'], "I, Infected" : constants['INFANTS_INF'], "I, Sick" : constants['INFANTS_SICK'], "I, Carriers" : constants['INFANTS_CARRIERS'], "I, Immune" : constants['INFANTS_IMMUNE'], "Y, Susceptible" : constants['YOUNG_SUSC'], "Y, Infected" : constants['YOUNG_INF'], "Y, Sick" : constants['YOUNG_SICK'], "Y, Carriers" : constants['YOUNG_CARRIERS'], "Y, Immune" : constants['YOUNG_IMMUNE'], "A, Susceptible" : constants['ADULT_SUSC'], "A, Infected" : constants['ADULT_INF'], "A, Sick" : constants['ADULT_SICK'], "A, Carriers" : constants['ADULT_CARRIERS'], "A, Immune" : constants['ADULT_IMMUNE']}
 
     # The plot_pop function produces a plot of a single population, as guided by the index data in the indices dictionary.
     for n in xrange(constants['NUMBER_OF_POPS']):
@@ -77,7 +74,7 @@ def run(pars):
     grouped_averages = []
     grouped_ratios = []
 
-    # Here, we group the data over each population by disease status and subsequently plot them.
+    # Here, we group the average data over each population by disease status and subsequently plot them.
     for n in xrange(constants['NUMBER_OF_POPS']):
         group_ave, indices_ave = group_by_disease(constants, averages[n])
         grouped_averages.append(group_ave)
@@ -86,8 +83,11 @@ def run(pars):
         grouped_ratios.append(group_ratio)
         plot_pop(constants, group_ratio, indices_ratio, 'Ratios grouped by disease status' + str(n))
 
-    #for n in xrange(constants['NUMBER_OF_POPS']):
 
+    # Plot the groups and ratios of immune as grouped by age, for each population.
+    immune_indices = {"Infants" : constants['INFANTS_IMMUNE'], "Young" : constants['YOUNG_IMMUNE'], "Adult" : constants['ADULT_IMMUNE']}
+    for n in xrange(constants['NUMBER_OF_POPS']):
+        plot_pop(constants, average_ratio[n], immune_indices, 'Ratios of immune by age, pop ' + str(n))
 
     plt.show()
 
