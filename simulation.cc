@@ -4,6 +4,7 @@ using namespace std;
 
 Simulation::Simulation(vector<Population>& populations, const vector<Event*>& ev) : pops(populations), events(ev), event_count(ev.size()) {
   snaps[0.] = vector<Population>(pops);
+  snaps_events[0.] = vector<int>(ev.size());
   random_device rd;
   generator.seed(rd());
 }
@@ -20,6 +21,7 @@ void Simulation::simulate() {
     if (time_delta + t > floor(t+1)) { //If the events are frequent enough, this should not be necessary. It does, however, make for more efficient measurements.
       t = floor(t+1);
       snaps[t] = vector<Population>(pops);
+      snaps_events[t] = vector<int>(event_count);
       continue;
     }
 
@@ -42,4 +44,12 @@ vector<Population> Simulation::get_state_at(double t) {
   auto res = find_if(snaps.begin(), snaps.end(), [&] (map<double, vector<Population>>::value_type obj) {return obj.first > t;} );
   --res;
   return vector<Population>(res->second);
+}
+
+vector<int> Simulation::get_events_at(double t) {
+  if (t > constants.get_int("NUM_DAYS") || t < 0 ) throw Illegal_time_exception();
+  if (snaps_events.count(t) != 0) return vector<int>(snaps_events[t]);
+  auto res = find_if(snaps_events.begin(), snaps_events.end(), [&] (map<double, vector<int>>::value_type obj) {return obj.first > t;});
+  --res;
+  return vector<int>(res->second);
 }

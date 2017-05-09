@@ -22,7 +22,7 @@ vector<int> read_population() {
 
   ifstream inp_file;
   string input_file_name = constants.get_string("INPUT_FILE");
-  inp_file.open("data/" + input_file_name + ".txt");
+  inp_file.open(input_file_name + ".txt");
   if(!inp_file.is_open()) {
     cerr << "Error opening the input file." << endl;
     exit(1);
@@ -38,11 +38,11 @@ vector<int> read_population() {
 
   int k;
   inp_file >> k;
-  cout << k << endl;
+  //cout << k << endl;
   for (int n = 0; n != constants.get_int("NUM_POPS"); ++n) {
     inp_file >> k;
     initial_pops[n] = k;
-    cout << k << endl;
+    //cout << k << endl;
   }
 
   inp_file.close();
@@ -76,10 +76,13 @@ void print_res(Simulation& sim, string dir_path, int simulation_index) {
     cerr << "Error opening the results file, exiting." << endl;
     exit(1);
   }
-  vector<int> events_vector = sim.get_event_counts();
-  for_each(events_vector.begin(), events_vector.end(), [&] (int num_ev) {events_file << num_ev << " ";});
-  events_file << "\n";
+  for (int n = 0; n != constants.get_int("NUM_DAYS"); ++n) {
+    vector<int> tmp = sim.get_events_at(static_cast<double>(n));
+    for_each(tmp.begin(), tmp.end(), [&] (int ev_count) {events_file << ev_count << " ";});
+    events_file << "\n";
+    }
   events_file.close();
+
 }
 
 int main() {

@@ -20,11 +20,14 @@ public:
   void simulate();
   std::vector<Population> get_state_at(double t);
   std::vector<int> get_event_counts() {return std::vector<int>(event_count);};
+  std::vector<int> get_events_at(double t);
   bool is_done() {return done;};
 private:
   std::vector<Population>& pops;
   std::vector<Event*> events;
   std::map<double, std::vector<Population>> snaps;
+  std::map<double, std::vector<int>> snaps_events;
+
   std::vector<int> event_count;
 
   std::default_random_engine generator;
