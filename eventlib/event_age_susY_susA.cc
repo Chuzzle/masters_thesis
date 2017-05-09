@@ -10,3 +10,7 @@ double Event_age_susY_susA::update_prob(double t) {
 void Event_age_susY_susA::execute_event() {
   pop.move_pop("YOUNG_SUSC", "ADULT_SUSC");
 }
+
+string Event_age_susY_susA::description() {
+  return "Young susceptible aging to adult susceptible";
+}

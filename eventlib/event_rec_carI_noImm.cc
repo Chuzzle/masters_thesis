@@ -10,3 +10,7 @@ double Event_rec_carI_noImm::update_prob(double t) {
 void Event_rec_carI_noImm::execute_event() {
   pop.move_pop("INFANTS_CARRIERS", "INFANTS_SUSC");
 }
+
+string Event_rec_carI_noImm::description() {
+  return "Infant carrier losing carriage and becoming susceptible";
+}

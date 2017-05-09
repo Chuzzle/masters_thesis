@@ -11,3 +11,7 @@ double Event_birth::update_prob(double t) {
 void Event_birth::execute_event() {
   pop.increment_pop("INFANTS_SUSC");
 }
+
+string Event_birth::description() {
+  return "Birth of an infant susceptible";
+}

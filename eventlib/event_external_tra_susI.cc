@@ -14,3 +14,7 @@ double Event_external_tra_susI::update_prob(double t) {
 void Event_external_tra_susI::execute_event() {
   pop.move_pop("INFANTS_SUSC", "INFANTS_INF");
 }
+
+string Event_external_tra_susI::description() {
+  return "Transmission to a susceptible infant from an external pop";
+}

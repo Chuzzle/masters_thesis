@@ -10,3 +10,7 @@ double Event_rec_carY_noImm::update_prob(double t) {
 void Event_rec_carY_noImm::execute_event() {
   pop.move_pop("YOUNG_CARRIERS", "YOUNG_SUSC");
 }
+
+string Event_rec_carY_noImm::description() {
+  return "Young carrier losing carriage without becoming immune";
+}

@@ -10,3 +10,7 @@ double Event_rec_immI::update_prob(double t) {
 void Event_rec_immI::execute_event() {
   pop.move_pop("INFANTS_IMMUNE", "INFANTS_SUSC");
 }
+
+string Event_rec_immI::description() {
+  return "Immune infant losing immunity and becoming susceptible";
+}

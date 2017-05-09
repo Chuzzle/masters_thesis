@@ -12,3 +12,7 @@ double Event_tra_susY::update_prob(double t) {
 void Event_tra_susY::execute_event() {
   pop.move_pop("YOUNG_SUSC", "YOUNG_INF");
 }
+
+string Event_tra_susY::description() {
+  return "Transmission to susceptible young";
+}

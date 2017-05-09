@@ -10,3 +10,7 @@ double Event_rec_carA_imm::update_prob(double t) {
 void Event_rec_carA_imm::execute_event() {
   pop.move_pop("ADULT_CARRIERS", "ADULT_IMMUNE");
 }
+
+string Event_rec_carA_imm::description() {
+  return "Adult carrier becoming immune and losing carriage";
+}

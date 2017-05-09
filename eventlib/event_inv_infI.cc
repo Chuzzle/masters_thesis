@@ -10,3 +10,7 @@ double Event_inv_infI::update_prob(double t) {
 void Event_inv_infI::execute_event() {
   pop.move_pop("INFANTS_INF", "INFANTS_SICK");
 }
+
+string Event_inv_infI::description() {
+  return "Invasive disease of an infected infant";
+}

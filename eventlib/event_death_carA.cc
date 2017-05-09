@@ -10,3 +10,7 @@ double Event_death_carA::update_prob(double t) {
 void Event_death_carA::execute_event() {
   pop.decrease_pop("ADULT_CARRIERS");
 }
+
+string Event_death_carA::description() {
+  return "Death of an adult carrier";
+}

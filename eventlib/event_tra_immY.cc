@@ -12,3 +12,7 @@ double Event_tra_immY::update_prob(double t) {
 void Event_tra_immY::execute_event() {
   pop.move_pop("YOUNG_IMMUNE", "YOUNG_CARRIERS");
 }
+
+string Event_tra_immY::description() {
+  return "Immune young becoming carrier";
+}

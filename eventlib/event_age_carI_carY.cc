@@ -10,3 +10,7 @@ double Event_age_carI_carY::update_prob(double t) {
 void Event_age_carI_carY::execute_event() {
   pop.move_pop("INFANTS_CARRIERS", "YOUNG_CARRIERS");
 }
+
+string Event_age_carI_carY::description() {
+  return "Infant carrier aging to young carrier";
+}

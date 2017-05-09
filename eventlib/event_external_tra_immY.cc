@@ -14,3 +14,7 @@ double Event_external_tra_immY::update_prob(double t) {
 void Event_external_tra_immY::execute_event() {
   pop.move_pop("YOUNG_IMMUNE", "YOUNG_CARRIERS");
 }
+
+string Event_external_tra_immY::description() {
+  return "Transmission to an immune young from an external pop";
+}

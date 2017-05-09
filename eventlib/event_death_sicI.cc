@@ -10,3 +10,7 @@ double Event_death_sicI::update_prob(double t) {
 void Event_death_sicI::execute_event() {
   pop.decrease_pop("INFANTS_SICK");
 }
+
+string Event_death_sicI::description() {
+  return "Death of a sick infant";
+}

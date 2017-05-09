@@ -20,3 +20,7 @@ double Event_encounter::update_prob(double t) {
 void Event_encounter::execute_event() {
   Constants_runspec::encounter_active = !Constants_runspec::encounter_active;
 }
+
+string Event_encounter::description() {
+  return "Dummy event letting two pops encounter eachother";
+}

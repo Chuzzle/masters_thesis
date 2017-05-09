@@ -10,3 +10,7 @@ double Event_rec_carA_noImm::update_prob(double t) {
 void Event_rec_carA_noImm::execute_event() {
   pop.move_pop("ADULT_CARRIERS", "ADULT_SUSC");
 }
+
+string Event_rec_carA_noImm::description() {
+  return "Adult carrier losing carriage and becoming susceptible";
+}

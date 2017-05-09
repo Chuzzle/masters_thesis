@@ -10,3 +10,7 @@ double Event_death_susA::update_prob(double t) {
 void Event_death_susA::execute_event() {
   pop.decrease_pop("ADULT_SUSC");
 }
+
+string Event_death_susA::description() {
+  return "Death of a susceptible adult";
+}

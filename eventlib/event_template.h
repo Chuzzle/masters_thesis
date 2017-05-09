@@ -6,6 +6,7 @@
 class EVENTNAME : public Event{
 public:
   explicit EVENTNAME(Population& pop_init) : Event(pop_init) {};
+  virtual std::string description();
   virtual double update_prob(double t);
   virtual void execute_event();
 };

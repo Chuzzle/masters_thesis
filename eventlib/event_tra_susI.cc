@@ -12,3 +12,7 @@ double Event_tra_susI::update_prob(double t) {
 void Event_tra_susI::execute_event() {
   pop.move_pop("INFANTS_SUSC", "INFANTS_INF");
 }
+
+string Event_tra_susI::description() {
+  return "Transmission to susceptible infant";
+}

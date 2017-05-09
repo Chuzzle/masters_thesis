@@ -10,3 +10,7 @@ double Event_rec_sicY::update_prob(double t) {
 void Event_rec_sicY::execute_event() {
   pop.move_pop("YOUNG_SICK", "YOUNG_IMMUNE_PER");
 }
+
+string Event_rec_sicY::description() {
+  return "Sick young recovering and gaining permanent immunity";
+}

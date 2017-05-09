@@ -10,3 +10,7 @@ double Event_age_immY_immA::update_prob(double t) {
 void Event_age_immY_immA::execute_event() {
   pop.move_pop("YOUNG_IMMUNE", "ADULT_IMMUNE");
 }
+
+string Event_age_immY_immA::description() {
+  return "Young immune aging to adult immune";
+}

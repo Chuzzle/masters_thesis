@@ -10,3 +10,7 @@ double Event_death_immA::update_prob(double t) {
 void Event_death_immA::execute_event() {
   pop.decrease_pop("ADULT_IMMUNE");
 }
+
+string Event_death_immA::description() {
+  return "Death of an adult immune";
+}

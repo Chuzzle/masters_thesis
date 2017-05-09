@@ -10,3 +10,7 @@ double Event_noninv_infA::update_prob(double t) {
 void Event_noninv_infA::execute_event() {
   pop.move_pop("ADULT_INF", "ADULT_CARRIERS");
 }
+
+string Event_noninv_infA::description() {
+  return "Infected adult becoming carrier";
+}

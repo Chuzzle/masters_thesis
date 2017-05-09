@@ -6,6 +6,7 @@
 class Event_rec_sicA : public Event {
 public:
   explicit Event_rec_sicA(Population& pop_init) : Event(pop_init) {};
+  virtual std::string description();
   virtual double update_prob(double t);
   virtual void execute_event();
 };
