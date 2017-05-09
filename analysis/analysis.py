@@ -58,6 +58,29 @@ def run(pars):
     # TODO: change this section if vaccination is implemented.
     nonzero_pop_indices = {"I, Susceptible" : constants['INFANTS_SUSC'], "I, Infected" : constants['INFANTS_INF'], "I, Sick" : constants['INFANTS_SICK'], "I, Carriers" : constants['INFANTS_CARRIERS'], "I, Immune" : constants['INFANTS_IMMUNE'], "Y, Susceptible" : constants['YOUNG_SUSC'], "Y, Infected" : constants['YOUNG_INF'], "Y, Sick" : constants['YOUNG_SICK'], "Y, Carriers" : constants['YOUNG_CARRIERS'], "Y, Immune" : constants['YOUNG_IMMUNE'], "A, Susceptible" : constants['ADULT_SUSC'], "A, Infected" : constants['ADULT_INF'], "A, Sick" : constants['ADULT_SICK'], "A, Carriers" : constants['ADULT_CARRIERS'], "A, Immune" : constants['ADULT_IMMUNE']}
 
+    # Construct an array holding all integer numbers for days in the dry season, after year five
+
+    day_indices = np.arange(5*365, constants['NUM_DAYS'])
+    dry_days = day_indices[day_indices%365 > constants['DRY_START']]
+    dry_days = dry_days[dry_days%365 < constants['DRY_END']]
+
+    wet_days = day_indices[(day_indices - constants['DRY_START'])%365 > constants['DRY_END'] - constants['DRY_START']]
+
+    dry_ave_base = np.zeros((constants['NUM_POPS'],1))
+    dry_aves = [np.copy(dry_ave_base) for _ in xrange(constants['NUMBER_OF_POPS'])]
+    wet_aves = [np.copy(dry_ave_base) for _ in xrange(constants['NUMBER_OF_POPS'])]
+
+    for index in xrange(constants['NUMBER_OF_POPS']):
+        dry_aves[index] = np.sum(averages[index][:,dry_days],1)
+        dry_aves[index] /= np.size(dry_days)
+
+        wet_aves[index] = np.sum(averages[index][:,wet_days],1)
+        wet_aves[index] /= np.size(wet_days)
+        print np.size(wet_days)
+
+    write_to_file(directory_name, constants, 'dry_data', dry_aves)
+    write_to_file(directory_name, constants, 'wet_data', wet_aves)
+
     # The plot_pop function produces a plot of a single population, as guided by the index data in the indices dictionary.
     for n in xrange(constants['NUMBER_OF_POPS']):
         plot_str = 'Standard deviation of the averages, population ' + str(n)
@@ -88,6 +111,15 @@ def run(pars):
     immune_indices = {"Infants" : constants['INFANTS_IMMUNE'], "Young" : constants['YOUNG_IMMUNE'], "Adult" : constants['ADULT_IMMUNE']}
     for n in xrange(constants['NUMBER_OF_POPS']):
         plot_pop(constants, average_ratio[n], immune_indices, 'Ratios of immune by age, pop ' + str(n))
+
+    #TODO: Use the existing framework to store the results I want. Seperate files for each data point? A seperate key?
+
+    #TODO: Create a plot with only sick individuals
+    sick_indices = {"Infants" : constants['INFANTS_SICK'], "Young" : constants['YOUNG_SICK'], "Adult" : constants['ADULT_SICK']}
+    for n in xrange(constants['NUMBER_OF_POPS']):
+        plot_pop(constants, averages[n], sick_indices, 'Average number of sick by age, pop ' + str(n))
+
+    #TODO: Construct data structure for dry/wet seasons.
 
     plt.show()
 
