@@ -100,6 +100,7 @@ int main() {
 
   boost::filesystem::copy_file("constants_runspec.json", dir_path + "/constants_runspec.json");
   boost::filesystem::copy_file("events.json", dir_path + "/events.json");
+  boost::filesystem::copy_file("README.txt", dir_path + "/README.txt");
 
 
   // Set up the output structure
