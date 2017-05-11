@@ -13,14 +13,31 @@ import copy
 def run(pars):
     # The input parameter should be the name of the super folder which holds the simulation results
     directory_name = pars[0]
+
+
+    here_dir = os.path.dirname(os.path.relpath(__file__))
+    data_directory = here_dir + '/../data/' + directory_name
+
     # Read the constants from the interesting directory. Should correspond to the constants for the simulation run in question
-    constants = read_constants(directory_name)
+    constants = read_constants(data_directory)
 
     # Create some sort of aggregate data. Data structure is: Full data is a list of lists, where the outermost layer signifies the run in question,
     # each sub-list splits into the relevant populations and below that is an np.array which holds the values themselves
     base_mat = np.zeros((constants['NUM_POPS'], constants['NUM_DAYS']))
     base_list = [np.copy(base_mat) for _ in xrange(constants['NUMBER_OF_POPS'])]
     full_data = [copy.deepcopy(base_list) for _ in xrange(constants['NUM_RUNS'])]
+
+    events_list = []
+
+    num_events = file_len(data_directory + '/events_indices.txt')
+
+    for n in xrange(constants['NUM_RUNS']):
+        event_data = read_events_file(constants, data_directory, n, num_events)
+        events_list.append(event_data)
+
+    daily_events = [np.diff(events) for events in events_list]
+    daily_events_average = sum(daily_events)/float(constants['NUM_DAYS'])
+    write_to_file(data_directory, constants, 'daily_events_ave', daily_events_average)
 
     # Averages is an average over the different runs. It is a list of np.arrays, each list element being one of the populations included in the run
     averages = copy.deepcopy(base_list)
@@ -31,7 +48,7 @@ def run(pars):
     # This reads the data from file into the structures we've defined above. Return value is formatted as above.
     for n in xrange(constants['NUM_RUNS']):
     #for n in xrange(10):
-        temp_data = read_data_file(constants, directory_name, n)
+        temp_data = read_data_file(constants, data_directory, n)
         for k in xrange(constants['NUMBER_OF_POPS']):
             full_data[n][k] = np.copy(temp_data[k])
             averages[k] += temp_data[k]
@@ -50,9 +67,9 @@ def run(pars):
         outp_file_stddev = 'std_devs' + str(index) + '.txt'
         outp_file_ratios = 'ratios' + str(index) + '.txt'
 
-        write_to_file(directory_name, constants, outp_file_ave, averages[index])
-        write_to_file(directory_name, constants, outp_file_stddev, std_devs[index])
-        write_to_file(directory_name, constants, outp_file_ratios, average_ratio[index])
+        write_to_file(data_directory, constants, outp_file_ave, averages[index])
+        write_to_file(data_directory, constants, outp_file_stddev, std_devs[index])
+        write_to_file(data_directory, constants, outp_file_ratios, average_ratio[index])
 
     # The dictionary below connects the string holding the name of the population to the index it has in the data structure. Allows for a more generic plot function.
     # TODO: change this section if vaccination is implemented.
@@ -70,16 +87,16 @@ def run(pars):
     dry_aves = [np.copy(dry_ave_base) for _ in xrange(constants['NUMBER_OF_POPS'])]
     wet_aves = [np.copy(dry_ave_base) for _ in xrange(constants['NUMBER_OF_POPS'])]
 
-    for index in xrange(constants['NUMBER_OF_POPS']):
-        dry_aves[index] = np.sum(averages[index][:,dry_days],1)
-        dry_aves[index] /= np.size(dry_days)
+    # for index in xrange(constants['NUMBER_OF_POPS']):
+    #     dry_aves[index] = np.sum(averages[index][:,dry_days],1)
+    #     dry_aves[index] /= np.size(dry_days)
+    #
+    #     wet_aves[index] = np.sum(averages[index][:,wet_days],1)
+    #     wet_aves[index] /= np.size(wet_days)
+    #     print np.size(wet_days)
 
-        wet_aves[index] = np.sum(averages[index][:,wet_days],1)
-        wet_aves[index] /= np.size(wet_days)
-        print np.size(wet_days)
-
-    write_to_file(directory_name, constants, 'dry_data', dry_aves)
-    write_to_file(directory_name, constants, 'wet_data', wet_aves)
+    # write_to_file(directory_name, constants, 'dry_data', dry_aves)
+    # write_to_file(directory_name, constants, 'wet_data', wet_aves)
 
     # The plot_pop function produces a plot of a single population, as guided by the index data in the indices dictionary.
     for n in xrange(constants['NUMBER_OF_POPS']):
@@ -124,8 +141,7 @@ def run(pars):
     plt.show()
 
 def read_constants(directory_name):
-    here_dir = os.path.dirname(os.path.relpath(__file__))
-    with open(here_dir + '/../data/' + directory_name + '/constants_runspec.json') as parameters_file:
+    with open(directory_name + '/constants_runspec.json') as parameters_file:
         constants = json.load(parameters_file)
     return constants
 
@@ -133,8 +149,7 @@ def read_data_file(constants, directory_name, number):
     base_mat = np.zeros((constants['NUM_POPS'], constants['NUM_DAYS']), dtype = np.int)
     return_data = [np.copy(base_mat) for _ in xrange(constants['NUMBER_OF_POPS'])]
     # return_data = [np.zeros((constants['NUM_POPS'], constants['NUM_DAYS']), dtype = np.int)] * constants['NUMBER_OF_POPS']
-    here_dir = os.path.dirname(os.path.relpath(__file__))
-    file_name = here_dir + '/../data/' + directory_name + '/simulation_results' + str(number) + '.txt'
+    file_name = directory_name + '/simulation_results' + str(number) + '.txt'
     with open(file_name) as data_file:
         for n in xrange(constants['NUM_DAYS']):
             data_string = data_file.readline()
@@ -144,9 +159,21 @@ def read_data_file(constants, directory_name, number):
                 return_data[k][:,n] = data[k*constants['NUM_POPS']:(k + 1)*constants['NUM_POPS']]
     return return_data
 
+def read_events_file(constants, directory_name, number, num_events):
+    # Determine the number of events
+
+    return_data = np.zeros((num_events, constants['NUM_DAYS']), dtype = np.int)
+    events_file = directory_name + '/simulation_results' + str(number) + '_eventcounts.txt'
+    with open(events_file) as ev_file:
+        for n in xrange(constants['NUM_DAYS']):
+            data_string = ev_file.readline()
+            data = data_string.split()
+            data = np.array(data, dtype = np.int)
+            return_data[:,n] = data
+    return return_data
+
 def write_to_file(directory_name, constants, output_file_name, data):
-    here_dir = os.path.dirname(os.path.relpath(__file__))
-    full_path = here_dir + '/../data/' + directory_name + '/processed_data'
+    full_path =  directory_name + '/processed_data'
     try:
         os.makedirs(full_path)
     except OSError as exception:
@@ -154,7 +181,7 @@ def write_to_file(directory_name, constants, output_file_name, data):
             raise
 
     with open(full_path + '/' + output_file_name, 'w') as output_file:
-        np.savetxt(output_file, data, fmt = '%10.3f')
+        np.savetxt(output_file, data, fmt = '%12.5f')
 
     output_file.close()
 
@@ -187,6 +214,12 @@ def plot_pop(constants, data, indices, title_string, legend = True):
         for index in indices.itervalues():
             plt.plot(time, data[index,:])
     #plt.legend()
+
+def file_len(f):
+    with open(f) as file:
+        for i,l in enumerate(file):
+            pass
+    return i+1
 
 if __name__ == '__main__':
     run(sys.argv[1:])
