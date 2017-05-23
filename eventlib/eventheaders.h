@@ -42,6 +42,13 @@
 #include "event_rec_sicI.h"
 #include "event_rec_sicY.h"
 
+#include "event_inv_infA_seasonal.h"
+#include "event_inv_infI_seasonal.h"
+#include "event_inv_infY_seasonal.h"
+#include "event_noninv_infA_seasonal.h"
+#include "event_noninv_infI_seasonal.h"
+#include "event_noninv_infY_seasonal.h"
+
 #include "event_rec_immI.h"
 #include "event_rec_immY.h"
 #include "event_rec_immA.h"
