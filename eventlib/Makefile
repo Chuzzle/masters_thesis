@@ -13,7 +13,10 @@ libevents.a: event.o eventheaders.o event_age_carI_carY.o event_age_carY_carA.o\
 	event_rec_sicA.o event_rec_sicI.o event_rec_sicY.o event_tra_immI.o\
 	event_tra_immY.o event_tra_immA.o event_external_tra_immI.o\
 	event_external_tra_immY.o event_external_tra_immA.o event_rec_immI.o\
-	event_rec_immY.o event_rec_immA.o
+	event_rec_immY.o event_rec_immA.o event_inv_infA_seasonal.o\
+	event_inv_infI_seasonal.o event_inv_infY_seasonal.o\
+	event_noninv_infA_seasonal.o event_noninv_infI_seasonal.o\
+	event_noninv_infY_seasonal.o
 	ar rcs $@ $^
 
 .PHONY: all clean install
