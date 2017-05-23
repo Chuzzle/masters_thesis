@@ -37,7 +37,7 @@ def run(pars):
 
     daily_events = [np.diff(events) for events in events_list]
     daily_events_average = sum(daily_events)/float(constants['NUM_DAYS'])
-    write_to_file(data_directory, constants, 'daily_events_ave', daily_events_average)
+    write_to_file(data_directory, constants, 'daily_events_ave.txt', daily_events_average)
 
     # Averages is an average over the different runs. It is a list of np.arrays, each list element being one of the populations included in the run
     averages = copy.deepcopy(base_list)
@@ -77,26 +77,24 @@ def run(pars):
 
     # Construct an array holding all integer numbers for days in the dry season, after year five
 
-    day_indices = np.arange(5*365, constants['NUM_DAYS'])
+    # The differentiation in calculating the daily events means that the array is one shorter.
+    day_indices = np.arange(5*365, constants['NUM_DAYS'] - 1)
     dry_days = day_indices[day_indices%365 > constants['DRY_START']]
     dry_days = dry_days[dry_days%365 < constants['DRY_END']]
 
     wet_days = day_indices[(day_indices - constants['DRY_START'])%365 > constants['DRY_END'] - constants['DRY_START']]
 
-    dry_ave_base = np.zeros((constants['NUM_POPS'],1))
-    dry_aves = [np.copy(dry_ave_base) for _ in xrange(constants['NUMBER_OF_POPS'])]
-    wet_aves = [np.copy(dry_ave_base) for _ in xrange(constants['NUMBER_OF_POPS'])]
+    events_ave_dry = np.zeros((num_events, 1))
+    events_ave_wet = np.zeros((num_events, 1))
 
-    # for index in xrange(constants['NUMBER_OF_POPS']):
-    #     dry_aves[index] = np.sum(averages[index][:,dry_days],1)
-    #     dry_aves[index] /= np.size(dry_days)
-    #
-    #     wet_aves[index] = np.sum(averages[index][:,wet_days],1)
-    #     wet_aves[index] /= np.size(wet_days)
-    #     print np.size(wet_days)
+    events_ave_dry = np.sum(daily_events_average[:,dry_days], axis = 1)
+    events_ave_dry /= np.size(dry_days)
 
-    # write_to_file(directory_name, constants, 'dry_data', dry_aves)
-    # write_to_file(directory_name, constants, 'wet_data', wet_aves)
+    events_ave_wet = np.sum(daily_events_average[:,wet_days], axis = 1)
+    events_ave_wet /= np.size(wet_days)
+
+    write_to_file(data_directory, constants, 'dry_data.txt', events_ave_dry)
+    write_to_file(data_directory, constants, 'wet_data.txt', events_ave_wet)
 
     # The plot_pop function produces a plot of a single population, as guided by the index data in the indices dictionary.
     for n in xrange(constants['NUMBER_OF_POPS']):
