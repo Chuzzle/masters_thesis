@@ -18,6 +18,8 @@ public:
   int get_total_pop();
   int get_infected();
   int get_carriers();
+  int get_infected_invasive();
+  int get_carriers_invasive();
 
   int move_pop(std::string move_from, std::string move_to);
   int increment_pop(std::string index);

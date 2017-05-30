@@ -63,6 +63,19 @@ int Population::get_carriers() {
   return returnval;
 }
 
+int Population::get_infected_invasive() {
+  int returnval = this->get_pop("INFANTS_SICK_INVASIVE") + this->get_pop("YOUNG_SICK_INVASIVE") + this->get_pop("ADULT_SICK_INVASIVE");
+  return returnval;
+}
+
+
+int Population::get_carriers_invasive() {
+  int returnval = this->get_pop("INFANTS_CARRIERS_INVASIVE") + this->get_pop("INFANTS_INF_INVASIVE");
+  returnval += this->get_pop("YOUNG_CARRIERS_INVASIVE") + this->get_pop("YOUNG_INF_INVASIVE");
+  returnval += this->get_pop("ADULT_CARRIERS_INVASIVE") + this->get_pop("ADULT_INF_INVASIVE");
+  return returnval;
+}
+
 int Population::move_pop (string move_from, string move_to) {
   int mv_from = constants.get_int(move_from);
   int mv_to = constants.get_int(move_to);
