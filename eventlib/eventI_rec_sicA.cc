@@ -8,9 +8,9 @@ double EventI_rec_sicA::update_prob(double t) {
 }
 
 void EventI_rec_sicA::execute_event() {
-  pop.move_pop("ADULT_SICK_INVASIVE", "ADULT_IMMUNE_PER");
+  pop.move_pop("ADULT_SICK_INVASIVE", "ADULT_IMMUNE");
 }
 
 string EventI_rec_sicA::description() {
-  return "Sick adult of the invasive strain recovering an becoming immune permanently";
+  return "Sick adult of the invasive strain recovering and gaining immunity";
 }

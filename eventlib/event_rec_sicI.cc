@@ -8,9 +8,9 @@ double Event_rec_sicI::update_prob(double t) {
 }
 
 void Event_rec_sicI::execute_event() {
-  pop.move_pop("INFANTS_SICK", "INFANTS_IMMUNE_PER");
+  pop.move_pop("INFANTS_SICK", "INFANTS_IMMUNE");
 }
 
 string Event_rec_sicI::description() {
-  return "Sick infant recovering an gaining permanent immunity";
+  return "Sick infant recovering and gaining immunity";
 }
