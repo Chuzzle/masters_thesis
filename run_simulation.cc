@@ -70,7 +70,7 @@ void print_res(Simulation& sim, string dir_path, int simulation_index) {
   res_file.close();
 
   ofstream events_file;
-  string full_path_events = dir_path + "/simulation_results" + to_string(simulation_index) + "_eventcounts.txt";
+  string full_path_events = dir_path + "/simulation_results" + "_eventcounts.txt" + to_string(simulation_index);
   events_file.open(full_path_events);
   if (!events_file.is_open()) {
     cerr << "Error opening the results file, exiting." << endl;
