@@ -42,7 +42,7 @@ def run(pars):
 
     time_axis = np.arange(constants['NUM_DAYS'])
     pop_ave_indices = zip(['I, susceptible', 'I, infected', 'I, sick', 'I, immune', 'I, carriers',
-                            'Y, Susceptible', 'Y, infected', 'Y, sick', 'Y, immune', 'Y, carriers'
+                            'Y, Susceptible', 'Y, infected', 'Y, sick', 'Y, immune', 'Y, carriers',
                             'A, susceptible', 'A, infected', 'A, sick', 'A, immune', 'A, carriers'], xrange(num_nonzero_pops))
 
     disease_indices = zip(['Sick', 'Immune', 'Carriers'], xrange(num_disease_statuses))
