@@ -26,13 +26,12 @@
 25    Young carrier losing carriage without becoming immune
 26    Adult carrier becoming immune and losing carriage
 27    Adult carrier losing carriage and becoming susceptible
-28    Adult carrier becoming permanently immune and losing carriage
-29    Sick infant recovering and gaining immunity
-30    Sick young recovering and gaining immunity
-31    Sick adult recovering and gaining immunity
-32    Immune adult becoming carrier
-33    Immune infant becoming carrier
-34    Immune young becoming carrier
-35    Immune infant losing immunity and becoming susceptible
-36    Immune young losing immunity and becoming susceptible
-37    Immune adult losing immunity and becoming susceptible
+28    Sick infant recovering and gaining immunity
+29    Sick young recovering and gaining immunity
+30    Sick adult recovering and gaining immunity
+31    Immune adult becoming carrier
+32    Immune infant becoming carrier
+33    Immune young becoming carrier
+34    Immune infant losing immunity and becoming susceptible
+35    Immune young losing immunity and becoming susceptible
+36    Immune adult losing immunity and becoming susceptible
