@@ -1,0 +1,87 @@
+0    Infant carrier aging to young carrier
+1    Young carrier aging to adult carrier
+2    Infant immune aging to young immune
+3    Young immune aging to adult immune
+4    Infant susceptible aging to young susceptible
+5    Young susceptible aging to adult susceptible
+6    Birth of an infant susceptible
+7    Death of an adult carrier
+8    Death of an adult immune
+9    Death of a susceptible adult
+10    Death of a sick adult
+11    Death of a sick young
+12    Death of a sick infant
+13    Transmission to susceptible adult
+14    Transmission to susceptible young
+15    Transmission to susceptible infant
+16    Invasive disease of an infected infant
+17    Invasive disease of an infected young
+18    Invasive disease on an infected adult
+19    Infant infected becoming carrier
+20    Young infected becoming carrier
+21    Infected adult becoming carrier
+22    Infant carrier becoming immune and losing carriage
+23    Infant carrier losing carriage and becoming susceptible
+24    Young carrier becoming immune and losing carriage
+25    Young carrier losing carriage without becoming immune
+26    Adult carrier becoming immune and losing carriage
+27    Adult carrier losing carriage and becoming susceptible
+28    Sick infant recovering and gaining immunity
+29    Sick young recovering and gaining immunity
+30    Sick adult recovering and gaining immunity
+31    Immune adult becoming carrier
+32    Immune infant becoming carrier
+33    Immune young becoming carrier
+34    Immune infant losing immunity and becoming susceptible
+35    Immune young losing immunity and becoming susceptible
+36    Immune adult losing immunity and becoming susceptible
+37    Infant carrier aging to young carrier
+38    Young carrier aging to adult carrier
+39    Infant immune aging to young immune
+40    Young immune aging to adult immune
+41    Infant susceptible aging to young susceptible
+42    Young susceptible aging to adult susceptible
+43    Birth of an infant susceptible
+44    Death of an adult carrier
+45    Death of an adult immune
+46    Death of a susceptible adult
+47    Death of a sick adult
+48    Death of a sick young
+49    Death of a sick infant
+50    Transmission to susceptible adult
+51    Transmission to susceptible young
+52    Transmission to susceptible infant
+53    Invasive disease of an infected infant
+54    Invasive disease of an infected young
+55    Invasive disease on an infected adult
+56    Infant infected becoming carrier
+57    Young infected becoming carrier
+58    Infected adult becoming carrier
+59    Infant carrier becoming immune and losing carriage
+60    Infant carrier losing carriage and becoming susceptible
+61    Young carrier becoming immune and losing carriage
+62    Young carrier losing carriage without becoming immune
+63    Adult carrier becoming immune and losing carriage
+64    Adult carrier losing carriage and becoming susceptible
+65    Sick infant recovering and gaining immunity
+66    Sick young recovering and gaining immunity
+67    Sick adult recovering and gaining immunity
+68    Immune adult becoming carrier
+69    Immune infant becoming carrier
+70    Immune young becoming carrier
+71    Immune infant losing immunity and becoming susceptible
+72    Immune young losing immunity and becoming susceptible
+73    Immune adult losing immunity and becoming susceptible
+74    Dummy event letting two pops encounter eachother
+75    Transmission to a susceptible adult from an external pop
+76    Transmission to a susceptible young from an external pop
+77    Transmission to a susceptible infant from an external pop
+78    Transmission to an immune adult from external pop
+79    Transmission to an immune young from an external pop
+80    Transmission to an immune infant from an external pop
+81    Transmission to a susceptible adult from an external pop
+82    Transmission to a susceptible young from an external pop
+83    Transmission to a susceptible infant from an external pop
+84    Transmission to an immune adult from external pop
+85    Transmission to an immune young from an external pop
+86    Transmission to an immune infant from an external pop

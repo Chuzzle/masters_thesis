@@ -240,7 +240,7 @@ vector<Event*> Events_wrapper::initialize_events(vector<Population>& pops) {
       event_list.push_back(ev);
       index_file << event_index++ << "    " << ev->description() << endl;
     }
-    if (events["event_inv_noninfY_seasonal"].asInt()) {
+    if (events["event_noninv_infY_seasonal"].asInt()) {
       Event_noninv_infY_seasonal* ev = new Event_noninv_infY_seasonal(pops[n]);
       event_list.push_back(ev);
       index_file << event_index++ << "    " << ev->description() << endl;

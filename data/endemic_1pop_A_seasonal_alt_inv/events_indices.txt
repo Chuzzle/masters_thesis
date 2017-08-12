@@ -1,0 +1,37 @@
+0    Infant carrier aging to young carrier
+1    Young carrier aging to adult carrier
+2    Infant immune aging to young immune
+3    Young immune aging to adult immune
+4    Infant susceptible aging to young susceptible
+5    Young susceptible aging to adult susceptible
+6    Birth of an infant susceptible
+7    Death of an adult carrier
+8    Death of an adult immune
+9    Death of a susceptible adult
+10    Death of a sick adult
+11    Death of a sick young
+12    Death of a sick infant
+13    Transmission to susceptible adult
+14    Transmission to susceptible young
+15    Transmission to susceptible infant
+16    Infant carrier becoming immune and losing carriage
+17    Infant carrier losing carriage and becoming susceptible
+18    Young carrier becoming immune and losing carriage
+19    Young carrier losing carriage without becoming immune
+20    Adult carrier becoming immune and losing carriage
+21    Adult carrier losing carriage and becoming susceptible
+22    Sick infant recovering and gaining immunity
+23    Sick young recovering and gaining immunity
+24    Sick adult recovering and gaining immunity
+25    Immune adult becoming carrier
+26    Immune infant becoming carrier
+27    Immune young becoming carrier
+28    Immune infant losing immunity and becoming susceptible
+29    Immune young losing immunity and becoming susceptible
+30    Immune adult losing immunity and becoming susceptible
+31    Invasive disease on an infected adult, seasonal parameters
+32    Invasive disease of an infected young, seasonal parameters
+33    Invasive disease of an infected infant, seasonal parameters
+34    Infected adult becoming carrier, seasonal parameters
+35    Young infected becoming carrier, seasonal parameters
+36    Infant infected becoming carrier, seasonal parameters

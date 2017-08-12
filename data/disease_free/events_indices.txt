@@ -1,0 +1,4 @@
+0    Infant susceptible aging to young susceptible
+1    Young susceptible aging to adult susceptible
+2    Birth of an infant susceptible
+3    Death of a susceptible adult
